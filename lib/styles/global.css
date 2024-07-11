@@ -1,0 +1,62 @@
+@import "./reset.css";
+@import "./colors.css";
+@import "./classes/backgound-color.css";
+@import "./classes/color.css";
+
+[data-color-scheme="light"] {
+  body {
+    /* For light and dark mode */
+    --theme-color-100: var(--light-color-100);
+    --theme-color-200: var(--light-color-200);
+    --theme-color-300: var(--light-color-300);
+    --theme-color-400: var(--light-color-400);
+    --theme-color-500: var(--light-color-500);
+    --theme-color-600: var(--light-color-600);
+    --theme-color-700: var(--light-color-700);
+    --theme-color-800: var(--light-color-800);
+    --theme-color-900: var(--light-color-900);
+
+    --contrast-theme-color-100: var(--dark-color-100);
+    --contrast-theme-color-200: var(--dark-color-200);
+    --contrast-theme-color-300: var(--dark-color-300);
+    --contrast-theme-color-400: var(--dark-color-400);
+    --contrast-theme-color-500: var(--dark-color-500);
+    --contrast-theme-color-600: var(--dark-color-600);
+    --contrast-theme-color-700: var(--dark-color-700);
+    --contrast-theme-color-800: var(--dark-color-800);
+    --contrast-theme-color-900: var(--dark-color-900);
+
+    color: var(--dark-color-900);
+  }
+}
+
+[data-color-scheme="dark"] {
+  body {
+    /* For light and dark mode */
+    --theme-color-100: var(--dark-color-100);
+    --theme-color-200: var(--dark-color-200);
+    --theme-color-300: var(--dark-color-300);
+    --theme-color-400: var(--dark-color-400);
+    --theme-color-500: var(--dark-color-500);
+    --theme-color-600: var(--dark-color-600);
+    --theme-color-700: var(--dark-color-700);
+    --theme-color-800: var(--dark-color-800);
+    --theme-color-900: var(--dark-color-900);
+
+    --contrast-theme-color-100: var(--light-color-100);
+    --contrast-theme-color-200: var(--light-color-200);
+    --contrast-theme-color-300: var(--light-color-300);
+    --contrast-theme-color-400: var(--light-color-400);
+    --contrast-theme-color-500: var(--light-color-500);
+    --contrast-theme-color-600: var(--light-color-600);
+    --contrast-theme-color-700: var(--light-color-700);
+    --contrast-theme-color-800: var(--light-color-800);
+    --contrast-theme-color-900: var(--light-color-900);
+
+    color: var(--light-color-900);
+  }
+}
+
+body {
+  background-color: var(--theme-color-900);
+}

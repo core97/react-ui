@@ -1,0 +1,84 @@
+/* https://uicolors.app/create */
+/* https://colorhunt.co/ */
+
+:root {
+  --primary-color-100: #d1fae9;
+  --primary-color-200: #a8f2d6;
+  --primary-color-300: #6fe6c1;
+  --primary-color-400: #36d1a6;
+  --primary-color-500: #12b78e;
+  --primary-color-600: #079474;
+  --primary-color-700: #057760;
+  --primary-color-800: #075e4e;
+  --primary-color-900: #064439;
+
+  --secondary-color-100: #eee7ce;
+  --secondary-color-200: #e1d2a7;
+  --secondary-color-300: #d0b574;
+  --secondary-color-400: #c19b4e;
+  --secondary-color-500: #b28740;
+  --secondary-color-600: #996c35;
+  --secondary-color-700: #7b512d;
+  --secondary-color-800: #67432c;
+  --secondary-color-900: #593a2a;
+
+  --success-color-100: #e2f6e5;
+  --success-color-200: #c7ebcd;
+  --success-color-300: #9cdba6;
+  --success-color-400: #67c176;
+  --success-color-500: #42a552;
+  --success-color-600: #328740;
+  --success-color-700: #2a6b35;
+  --success-color-800: #25562e;
+  --success-color-900: #204728;
+
+  --info-color-100: #dbf0fe;
+  --info-color-200: #bfe5fe;
+  --info-color-300: #93d6fd;
+  --info-color-400: #60befa;
+  --info-color-500: #3fa2f6;
+  --info-color-600: #2583eb;
+  --info-color-700: #1d6cd8;
+  --info-color-800: #1e57af;
+  --info-color-900: #1e4b8a;
+
+  --warning-color-100: #fdead7;
+  --warning-color-200: #fad2ae;
+  --warning-color-300: #f4a261;
+  --warning-color-400: #f18746;
+  --warning-color-500: #ed6722;
+  --warning-color-600: #de4e18;
+  --warning-color-700: #b83a16;
+  --warning-color-800: #933019;
+  --warning-color-900: #762a18;
+
+  --error-color-100: #ffdddd;
+  --error-color-200: #ffc0c0;
+  --error-color-300: #ff9494;
+  --error-color-400: #ff5757;
+  --error-color-500: #ff2323;
+  --error-color-600: #ff0000;
+  --error-color-700: #d70000;
+  --error-color-800: #b10303;
+  --error-color-900: #920a0a;
+
+  --light-color-100: #979797;
+  --light-color-200: #a4a4a4;
+  --light-color-300: #b1b1b1;
+  --light-color-400: #bebebe;
+  --light-color-500: #cbcbcb;
+  --light-color-600: #d8d8d8;
+  --light-color-700: #e5e5e5;
+  --light-color-800: #f2f2f2;
+  --light-color-900: #ffffff;
+
+  --dark-color-100: #5B5B5B;
+  --dark-color-200: #525252;
+  --dark-color-300: #494949;
+  --dark-color-400: #404040;
+  --dark-color-500: #373737;
+  --dark-color-600: #2E2E2E;
+  --dark-color-700: #252525;
+  --dark-color-800: #1C1C1C;
+  --dark-color-900: #131313;
+}
