@@ -3,20 +3,20 @@ import styles from "./Spinner.module.css";
 
 export const Spinner = ({
   color = "contrast-theme",
-  measureSize,
+  customSize,
   size = "m",
 }: SpinnerProps) => {
   const classNames = [
     styles.spinner,
-    measureSize ? "" : styles[`spinner--${size}`],
+    customSize ? "" : styles[`spinner--${size}`],
     styles[`spinner--color-${color}`],
   ];
 
   return (
     <div
-      className={classNames.join(' ')}
-      {...(measureSize && {
-        style: { height: measureSize, width: measureSize },
+      className={classNames.join(" ")}
+      {...(customSize && {
+        style: { height: customSize, width: customSize },
       })}
     ></div>
   );

@@ -1,0 +1,193 @@
+.button {
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease-out;
+  position: relative;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: auto;
+}
+
+.button__spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button--loading {
+  color: transparent !important;
+}
+
+.button--size-xs {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.button--size-s {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.button--size-m {
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.button--size-l {
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.button--size-xl {
+  padding: 12px 24px;
+  font-size: 20px;
+}
+
+/* ######## Filled variant ######## */
+
+.button--variant-filled-theme {
+  background-color: var(--theme-color-900);
+  color: var(--contrast-theme-color-900);
+}
+
+.button--variant-filled-theme:hover {
+  background-color: var(--theme-color-800);
+}
+
+.button--variant-filled-contrast-theme {
+  background-color: var(--contrast-theme-color-900);
+  color: var(--theme-color-900);
+}
+
+.button--variant-filled-contrast-theme:hover {
+  background-color: var(--contrast-theme-color-800);
+}
+
+.button--variant-filled-primary {
+  background-color: var(--primary-color-500);
+  color: var(--theme-color-900);
+}
+
+.button--variant-filled-primary:hover {
+  background-color: var(--primary-color-400);
+}
+
+.button--variant-filled-secondary {
+  background-color: var(--secondary-color-500);
+  color: var(--theme-color-900);
+}
+
+.button--variant-filled-secondary:hover {
+  background-color: var(--secondary-color-400);
+}
+
+/* ######## Outline variant ######## */
+.button--variant-outline {
+  background-color: transparent;
+}
+
+.button--variant-outline-theme,
+.button--variant-outline-contrast-theme {
+  border-color: var(--contrast-theme-color-900);
+  color: var(--contrast-theme-color-900);
+}
+
+.button--variant-outline-theme:hover,
+.button--variant-outline-contrast-theme:hover {
+  background-color: var(--contrast-theme-color-900);
+  color: var(--light-color-900);
+}
+
+[data-color-scheme="dark"] .button--variant-outline-theme:hover,
+[data-color-scheme="dark"] .button--variant-outline-contrast-theme:hover {
+  color: var(--dark-color-900);
+}
+
+.button--variant-outline-primary {
+  border-color: var(--primary-color-600);
+  color: var(--primary-color-600);
+}
+
+.button--variant-outline-primary:hover {
+  color: var(--primary-color-100);
+  background-color: var(--primary-color-600);
+}
+
+.button--variant-outline-secondary {
+  border-color: var(--secondary-color-600);
+  color: var(--secondary-color-600);
+}
+
+.button--variant-outline-secondary:hover {
+  color: var(--secondary-color-100);
+  background-color: var(--secondary-color-600);
+}
+
+/* ######## Ghost variant ######## */
+
+.button--variant-ghost {
+  color: var(--contrast-theme-color-900);
+  background-color: transparent;
+}
+
+.button--variant-ghost-contrast-theme:hover,
+.button--variant-ghost-theme:hover {
+  background-color: var(--theme-color-700);
+}
+
+.button--variant-ghost-primary {
+  color: var(--primary-color-700);
+}
+
+.button--variant-ghost-primary:hover {
+  background-color: var(--primary-color-200);
+}
+
+.button--variant-ghost-secondary {
+  color: var(--secondary-color-700);
+}
+
+.button--variant-ghost-secondary:hover {
+  background-color: var(--secondary-color-200);
+}
+
+/* ######## Link variant ######## */
+
+.button--variant-link {
+  background-color: transparent;
+  border-radius: 0px;
+  padding: 0px;
+  padding-bottom: 1px;
+}
+
+.button--variant-link-contrast-theme,
+.button--variant-link-theme {
+  color: var(--contrast-theme-color-900);
+}
+
+.button--variant-link-contrast-theme:hover,
+.button--variant-link-theme:hover {
+  border-bottom-color: var(--contrast-theme-color-900);
+}
+
+.button--variant-link-primary {
+  color: var(--primary-color-500);
+}
+
+.button--variant-link-primary:hover {
+  border-bottom-color: var(--primary-color-500);
+}
+
+.button--variant-link-secondary {
+  color: var(--secondary-color-500);
+}
+
+.button--variant-link-secondary:hover {
+  border-bottom-color: var(--primary-color-500);
+}

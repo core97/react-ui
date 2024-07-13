@@ -59,3 +59,5 @@ export type Color =
   | "contrast-theme-700"
   | "contrast-theme-800"
   | "contrast-theme-900";
+
+export type ColorName = "primary" | "secondary" | "theme" | "contrast-theme";
