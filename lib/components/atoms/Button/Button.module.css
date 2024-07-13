@@ -3,6 +3,11 @@
   border: 1px solid transparent;
   transition: background-color 0.2s ease-out;
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .button:hover {
@@ -27,51 +32,51 @@
 .button--size-xs {
   padding: 4px 8px;
   font-size: 12px;
+  gap: 8px;
 }
 
 .button--size-s {
   padding: 6px 12px;
   font-size: 14px;
+  gap: 12px;
 }
 
 .button--size-m {
   padding: 8px 16px;
   font-size: 16px;
+  gap: 16px;
 }
 
 .button--size-l {
   padding: 10px 20px;
   font-size: 18px;
+  gap: 20px;
 }
 
 .button--size-xl {
   padding: 12px 24px;
   font-size: 20px;
+  gap: 24px;
 }
 
 /* ######## Filled variant ######## */
 
+.button--variant-filled {
+  color: var(--light-color-900);
+}
+
+.button--variant-filled-contrast-theme,
 .button--variant-filled-theme {
-  background-color: var(--theme-color-900);
-  color: var(--contrast-theme-color-900);
-}
-
-.button--variant-filled-theme:hover {
-  background-color: var(--theme-color-800);
-}
-
-.button--variant-filled-contrast-theme {
   background-color: var(--contrast-theme-color-900);
-  color: var(--theme-color-900);
 }
 
-.button--variant-filled-contrast-theme:hover {
-  background-color: var(--contrast-theme-color-800);
+.button--variant-filled-contrast-theme:hover,
+.button--variant-filled-theme:hover {
+  background-color: var(--contrast-theme-color-600);
 }
 
 .button--variant-filled-primary {
   background-color: var(--primary-color-500);
-  color: var(--theme-color-900);
 }
 
 .button--variant-filled-primary:hover {
@@ -80,7 +85,6 @@
 
 .button--variant-filled-secondary {
   background-color: var(--secondary-color-500);
-  color: var(--theme-color-900);
 }
 
 .button--variant-filled-secondary:hover {

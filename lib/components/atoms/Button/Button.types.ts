@@ -7,6 +7,8 @@ export interface ButtonProps
   > {
   color?: ColorName;
   isLoading?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
   size?: "xs" | "s" | "m" | "l" | "xl";
   variant?: "filled" | "outline" | "ghost" | "link";
 }

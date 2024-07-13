@@ -1,7 +1,8 @@
 import React from "react";
 import { Spinner } from "../Spinner";
+import { Icon, IconProps } from "../Icon";
 import { ButtonProps } from "./Button.types";
-import { SPINNER_SIZE } from "./Button.constants";
+import { SIZE } from "./Button.constants";
 import styles from "./Button.module.css";
 
 export const Button = ({
@@ -9,6 +10,8 @@ export const Button = ({
   children,
   disabled,
   isLoading,
+  leftIcon,
+  rightIcon,
   size = "m",
   variant = "filled",
   ...rest
@@ -28,12 +31,23 @@ export const Button = ({
       disabled={isLoading || disabled}
       className={classNames.join(" ")}
     >
+      {Boolean(React.isValidElement(leftIcon) && leftIcon.type === Icon) &&
+        React.cloneElement(leftIcon as React.ReactElement<IconProps>, {
+          size: SIZE[size],
+        })}
+
       {isLoading && (
         <div className={styles.button__spinner}>
-          <Spinner customSize={`${SPINNER_SIZE[size]}px`} />
+          <Spinner customSize={`${SIZE[size]}px`} />
         </div>
       )}
+
       {children}
+
+      {Boolean(React.isValidElement(rightIcon) && rightIcon.type === Icon) &&
+        React.cloneElement(rightIcon as React.ReactElement<IconProps>, {
+          size: SIZE[size],
+        })}
     </button>
   );
 };
