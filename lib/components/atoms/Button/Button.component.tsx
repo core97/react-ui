@@ -7,6 +7,7 @@ import { SIZE } from "./Button.constants";
 import styles from "./Button.module.css";
 
 export const Button = ({
+  className,
   color = "contrast-theme",
   children,
   disabled,
@@ -31,7 +32,7 @@ export const Button = ({
       type="button"
       {...rest}
       disabled={isLoading || disabled}
-      className={classNames.join(" ")}
+      className={`${classNames.join(" ")} ${className || ""}`}
     >
       {Boolean(React.isValidElement(leftIcon) && leftIcon.type === Icon) &&
         React.cloneElement(leftIcon as React.ReactElement<IconProps>, {

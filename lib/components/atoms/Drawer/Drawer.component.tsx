@@ -1,3 +1,5 @@
+import { Button } from "../Button";
+import { Icon } from "../Icon";
 import { DrawerProps } from "./Drawer.types";
 import styles from "./Drawer.module.css";
 
@@ -28,18 +30,21 @@ export const Drawer = ({
       <div
         role="dialog"
         aria-modal
+        aria-hidden={!isOpen}
         className={`${styles.drawer}  ${modifierClassNames.join(" ")}`}
       >
         <header className={styles["drawer__header"]}>
           {Boolean(header) && header}
 
-          <button
+          <Button
             type="button"
+            variant="ghost"
+            size="xs"
             onClick={onClose}
             className={styles["drawer__close-btn"]}
           >
-            X
-          </button>
+            <Icon name="close" size={20} />
+          </Button>
         </header>
         <main className={styles["drawer__content"]}>{children}</main>
         {Boolean(footer) && (
