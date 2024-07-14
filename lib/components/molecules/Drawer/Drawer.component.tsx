@@ -1,5 +1,5 @@
-import { Button } from "../Button";
-import { Icon } from "../Icon";
+import { Button } from "../../atoms/Button";
+import { Icon } from "../../atoms/Icon";
 import { DrawerProps } from "./Drawer.types";
 import styles from "./Drawer.module.css";
 
