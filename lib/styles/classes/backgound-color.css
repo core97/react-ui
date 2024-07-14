@@ -57,3 +57,43 @@
 .bg-contrast-theme-700 { background-color: var(--contrast-theme-color-700) }
 .bg-contrast-theme-800 { background-color: var(--contrast-theme-color-800) }
 .bg-contrast-theme-900 { background-color: var(--contrast-theme-color-900) }
+
+.bg-success-100 { background-color: var(--success-color-100) }
+.bg-success-200 { background-color: var(--success-color-200) }
+.bg-success-300 { background-color: var(--success-color-300) }
+.bg-success-400 { background-color: var(--success-color-400) }
+.bg-success-500 { background-color: var(--success-color-500) }
+.bg-success-600 { background-color: var(--success-color-600) }
+.bg-success-700 { background-color: var(--success-color-700) }
+.bg-success-800 { background-color: var(--success-color-800) }
+.bg-success-900 { background-color: var(--success-color-900) }
+
+.bg-info-100 { background-color: var(--info-color-100) }
+.bg-info-200 { background-color: var(--info-color-200) }
+.bg-info-300 { background-color: var(--info-color-300) }
+.bg-info-400 { background-color: var(--info-color-400) }
+.bg-info-500 { background-color: var(--info-color-500) }
+.bg-info-600 { background-color: var(--info-color-600) }
+.bg-info-700 { background-color: var(--info-color-700) }
+.bg-info-800 { background-color: var(--info-color-800) }
+.bg-info-900 { background-color: var(--info-color-900) }
+
+.bg-warning-100 { background-color: var(--warning-color-100) }
+.bg-warning-200 { background-color: var(--warning-color-200) }
+.bg-warning-300 { background-color: var(--warning-color-300) }
+.bg-warning-400 { background-color: var(--warning-color-400) }
+.bg-warning-500 { background-color: var(--warning-color-500) }
+.bg-warning-600 { background-color: var(--warning-color-600) }
+.bg-warning-700 { background-color: var(--warning-color-700) }
+.bg-warning-800 { background-color: var(--warning-color-800) }
+.bg-warning-900 { background-color: var(--warning-color-900) }
+
+.bg-error-100 { background-color: var(--error-color-100) }
+.bg-error-200 { background-color: var(--error-color-200) }
+.bg-error-300 { background-color: var(--error-color-300) }
+.bg-error-400 { background-color: var(--error-color-400) }
+.bg-error-500 { background-color: var(--error-color-500) }
+.bg-error-600 { background-color: var(--error-color-600) }
+.bg-error-700 { background-color: var(--error-color-700) }
+.bg-error-800 { background-color: var(--error-color-800) }
+.bg-error-900 { background-color: var(--error-color-900) }

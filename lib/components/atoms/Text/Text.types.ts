@@ -1,17 +1,7 @@
 import { Color } from "../../../types/colors.types";
+import { FontSizeMeasure } from "../../../types/font-size.types";
 
-export type TextSize =
-  | "5xl"
-  | "4xl"
-  | "3xl"
-  | "2xl"
-  | "xl"
-  | "l"
-  | "m"
-  | "s"
-  | "xs";
-
-export type TextTagAs =
+type TextTagAs =
   | "h1"
   | "h2"
   | "h3"
@@ -22,7 +12,7 @@ export type TextTagAs =
   | "details"
   | "span";
 
-export type TextWeight =
+type TextWeight =
   | "100"
   | "200"
   | "300"
@@ -37,6 +27,6 @@ export interface TextProps {
   children: React.ReactNode;
   as?: TextTagAs;
   color?: Color;
-  size?: TextSize;
+  size?: FontSizeMeasure;
   weight?: TextWeight;
 }

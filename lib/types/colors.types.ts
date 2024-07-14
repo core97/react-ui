@@ -58,6 +58,56 @@ export type Color =
   | "contrast-theme-600"
   | "contrast-theme-700"
   | "contrast-theme-800"
-  | "contrast-theme-900";
+  | "contrast-theme-900"
+  /* sucess */
+  | "success-100"
+  | "success-200"
+  | "success-300"
+  | "success-400"
+  | "success-500"
+  | "success-600"
+  | "success-700"
+  | "success-800"
+  | "success-900"
+  /* info */
+  | "info-100"
+  | "info-200"
+  | "info-300"
+  | "info-400"
+  | "info-500"
+  | "info-600"
+  | "info-700"
+  | "info-800"
+  | "info-900"
+  /* warning */
+  | "warning-100"
+  | "warning-200"
+  | "warning-300"
+  | "warning-400"
+  | "warning-500"
+  | "warning-600"
+  | "warning-700"
+  | "warning-800"
+  | "warning-900"
+  /* error */
+  | "error-100"
+  | "error-200"
+  | "error-300"
+  | "error-400"
+  | "error-500"
+  | "error-600"
+  | "error-700"
+  | "error-800"
+  | "error-900";
 
-export type ColorName = "primary" | "secondary" | "theme" | "contrast-theme";
+export type ColorName =
+  | "primary"
+  | "secondary"
+  | "theme"
+  | "contrast-theme"
+  | "light"
+  | "dark"
+  | "success"
+  | "info"
+  | "warning"
+  | "error";

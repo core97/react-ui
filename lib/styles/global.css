@@ -2,6 +2,7 @@
 @import "./colors.css";
 @import "./classes/backgound-color.css";
 @import "./classes/color.css";
+@import "./classes/font-size.css";
 
 [data-color-scheme="light"] {
   body {

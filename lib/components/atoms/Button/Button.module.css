@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .button:hover {
@@ -15,7 +16,7 @@
 }
 
 .button:disabled {
-  cursor: auto;
+  cursor: not-allowed;
 }
 
 .button__spinner {
@@ -31,31 +32,26 @@
 
 .button--size-xs {
   padding: 4px 8px;
-  font-size: 12px;
   gap: 8px;
 }
 
 .button--size-s {
   padding: 6px 12px;
-  font-size: 14px;
   gap: 12px;
 }
 
 .button--size-m {
   padding: 8px 16px;
-  font-size: 16px;
   gap: 16px;
 }
 
 .button--size-l {
   padding: 10px 20px;
-  font-size: 18px;
   gap: 20px;
 }
 
 .button--size-xl {
   padding: 12px 24px;
-  font-size: 20px;
   gap: 24px;
 }
 
@@ -89,6 +85,38 @@
 
 .button--variant-filled-secondary:hover {
   background-color: var(--secondary-color-400);
+}
+
+.button--variant-filled-success {
+  background-color: var(--success-color-500);
+}
+
+.button--variant-filled-success:hover {
+  background-color: var(--success-color-400);
+}
+
+.button--variant-filled-info {
+  background-color: var(--info-color-500);
+}
+
+.button--variant-filled-info:hover {
+  background-color: var(--info-color-400);
+}
+
+.button--variant-filled-warning {
+  background-color: var(--warning-color-500);
+}
+
+.button--variant-filled-warning:hover {
+  background-color: var(--warning-color-400);
+}
+
+.button--variant-filled-error {
+  background-color: var(--error-color-500);
+}
+
+.button--variant-filled-error:hover {
+  background-color: var(--error-color-400);
 }
 
 /* ######## Outline variant ######## */
@@ -133,6 +161,46 @@
   background-color: var(--secondary-color-600);
 }
 
+.button--variant-outline-success {
+  border-color: var(--success-color-600);
+  color: var(--success-color-600);
+}
+
+.button--variant-outline-success:hover {
+  color: var(--success-color-100);
+  background-color: var(--success-color-600);
+}
+
+.button--variant-outline-info {
+  border-color: var(--info-color-600);
+  color: var(--info-color-600);
+}
+
+.button--variant-outline-info:hover {
+  color: var(--info-color-100);
+  background-color: var(--info-color-600);
+}
+
+.button--variant-outline-warning {
+  border-color: var(--warning-color-600);
+  color: var(--warning-color-600);
+}
+
+.button--variant-outline-warning:hover {
+  color: var(--warning-color-100);
+  background-color: var(--warning-color-600);
+}
+
+.button--variant-outline-error {
+  border-color: var(--error-color-600);
+  color: var(--error-color-600);
+}
+
+.button--variant-outline-error:hover {
+  color: var(--error-color-100);
+  background-color: var(--error-color-600);
+}
+
 /* ######## Ghost variant ######## */
 
 .button--variant-ghost {
@@ -142,23 +210,61 @@
 
 .button--variant-ghost-contrast-theme:hover,
 .button--variant-ghost-theme:hover {
-  background-color: var(--theme-color-700);
+  background-color: var(--theme-color-600);
 }
 
 .button--variant-ghost-primary {
-  color: var(--primary-color-700);
+  color: var(--primary-color-500);
 }
 
 .button--variant-ghost-primary:hover {
-  background-color: var(--primary-color-200);
+  background-color: var(--primary-color-400);
+  color: var(--primary-color-700);
 }
 
 .button--variant-ghost-secondary {
-  color: var(--secondary-color-700);
+  color: var(--secondary-color-500);
 }
 
 .button--variant-ghost-secondary:hover {
-  background-color: var(--secondary-color-200);
+  background-color: var(--secondary-color-400);
+  color: var(--secondary-color-700);
+}
+
+.button--variant-ghost-success {
+  color: var(--success-color-500);
+}
+
+.button--variant-ghost-success:hover {
+  background-color: var(--success-color-400);
+  color: var(--success-color-700);
+}
+
+.button--variant-ghost-info {
+  color: var(--info-color-500);
+}
+
+.button--variant-ghost-info:hover {
+  background-color: var(--info-color-400);
+  color: var(--info-color-700);
+}
+
+.button--variant-ghost-warning {
+  color: var(--warning-color-500);
+}
+
+.button--variant-ghost-warning:hover {
+  background-color: var(--warning-color-400);
+  color: var(--warning-color-700);
+}
+
+.button--variant-ghost-error {
+  color: var(--error-color-500);
+}
+
+.button--variant-ghost-error:hover {
+  background-color: var(--error-color-400);
+  color: var(--error-color-700);
 }
 
 /* ######## Link variant ######## */
@@ -193,5 +299,37 @@
 }
 
 .button--variant-link-secondary:hover {
-  border-bottom-color: var(--primary-color-500);
+  border-bottom-color: var(--secondary-color-500);
+}
+
+.button--variant-link-success {
+  color: var(--success-color-500);
+}
+
+.button--variant-link-success:hover {
+  border-bottom-color: var(--success-color-500);
+}
+
+.button--variant-link-info {
+  color: var(--info-color-500);
+}
+
+.button--variant-link-info:hover {
+  border-bottom-color: var(--info-color-500);
+}
+
+.button--variant-link-warning {
+  color: var(--warning-color-500);
+}
+
+.button--variant-link-warning:hover {
+  border-bottom-color: var(--warning-color-500);
+}
+
+.button--variant-link-error {
+  color: var(--error-color-500);
+}
+
+.button--variant-link-error:hover {
+  border-bottom-color: var(--error-color-500);
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Spinner } from "../Spinner";
 import { Icon, IconProps } from "../Icon";
+import { FONT_SIZE_CLASS_NAMES } from "../../../constants/class-names/font-size.constants";
 import { ButtonProps } from "./Button.types";
 import { SIZE } from "./Button.constants";
 import styles from "./Button.module.css";
@@ -22,6 +23,7 @@ export const Button = ({
     isLoading ? styles[`button--loading`] : "",
     styles[`button--variant-${variant}`],
     styles[`button--variant-${variant}-${color}`],
+    FONT_SIZE_CLASS_NAMES[size],
   ];
 
   return (
@@ -38,7 +40,15 @@ export const Button = ({
 
       {isLoading && (
         <div className={styles.button__spinner}>
-          <Spinner customSize={`${SIZE[size]}px`} />
+          <Spinner
+            customSize={`${SIZE[size]}px`}
+            color={
+              variant === "filled" &&
+              (color === "contrast-theme" || color === "theme")
+                ? "theme"
+                : undefined
+            }
+          />
         </div>
       )}
 
