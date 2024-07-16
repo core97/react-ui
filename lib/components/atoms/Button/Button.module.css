@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .button:hover {
@@ -63,6 +63,7 @@
 
 .button--variant-filled-contrast-theme,
 .button--variant-filled-theme {
+  color: var(--theme-color-900);
   background-color: var(--contrast-theme-color-900);
 }
 
@@ -126,79 +127,84 @@
 
 .button--variant-outline-theme,
 .button--variant-outline-contrast-theme {
-  border-color: var(--contrast-theme-color-900);
+  border-color: var(--theme-color-700);
   color: var(--contrast-theme-color-900);
 }
 
 .button--variant-outline-theme:hover,
 .button--variant-outline-contrast-theme:hover {
-  background-color: var(--contrast-theme-color-900);
-  color: var(--light-color-900);
+  background-color: var(--theme-color-700);
+}
+
+[data-color-scheme="dark"] .button--variant-outline-theme,
+[data-color-scheme="dark"] .button--variant-outline-contrast-theme {
+  border-color: var(--theme-color-600);
+  color: var(--contrast-theme-color-900);
 }
 
 [data-color-scheme="dark"] .button--variant-outline-theme:hover,
 [data-color-scheme="dark"] .button--variant-outline-contrast-theme:hover {
-  color: var(--dark-color-900);
+  background-color: var(--theme-color-600);
 }
 
 .button--variant-outline-primary {
-  border-color: var(--primary-color-600);
+  border-color: var(--primary-color-500);
   color: var(--primary-color-600);
 }
 
 .button--variant-outline-primary:hover {
-  color: var(--primary-color-100);
-  background-color: var(--primary-color-600);
+  color: var(--primary-color-800);
+  background-color: var(--primary-color-500);
 }
 
 .button--variant-outline-secondary {
-  border-color: var(--secondary-color-600);
+  border-color: var(--secondary-color-500);
   color: var(--secondary-color-600);
 }
 
 .button--variant-outline-secondary:hover {
-  color: var(--secondary-color-100);
-  background-color: var(--secondary-color-600);
+  color: var(--secondary-color-800);
+  background-color: var(--secondary-color-500);
 }
 
 .button--variant-outline-success {
-  border-color: var(--success-color-600);
+  border-color: var(--success-color-500);
   color: var(--success-color-600);
 }
 
 .button--variant-outline-success:hover {
-  color: var(--success-color-100);
-  background-color: var(--success-color-600);
+  color: var(--success-color-800);
+  background-color: var(--success-color-500);
 }
 
 .button--variant-outline-info {
-  border-color: var(--info-color-600);
+  border-color: var(--info-color-500);
   color: var(--info-color-600);
 }
 
 .button--variant-outline-info:hover {
-  color: var(--info-color-100);
-  background-color: var(--info-color-600);
+  color: var(--info-color-800);
+  background-color: var(--info-color-500);
 }
 
 .button--variant-outline-warning {
-  border-color: var(--warning-color-600);
+  border-color: var(--warning-color-500);
   color: var(--warning-color-600);
 }
 
 .button--variant-outline-warning:hover {
-  color: var(--warning-color-100);
-  background-color: var(--warning-color-600);
+  color: var(--warning-color-800);
+  background-color: var(--warning-color-500);
 }
 
 .button--variant-outline-error {
-  border-color: var(--error-color-600);
+  border-color: var(--error-color-500);
   color: var(--error-color-600);
 }
 
 .button--variant-outline-error:hover {
-  color: var(--error-color-100);
-  background-color: var(--error-color-600);
+  color: var(--error-color-800);
+  background-color: var(--error-color-500);
 }
 
 /* ######## Ghost variant ######## */
@@ -210,7 +216,7 @@
 
 .button--variant-ghost-contrast-theme:hover,
 .button--variant-ghost-theme:hover {
-  background-color: var(--theme-color-600);
+  background-color: var(--theme-color-700);
 }
 
 .button--variant-ghost-primary {
@@ -332,4 +338,8 @@
 
 .button--variant-link-error:hover {
   border-bottom-color: var(--error-color-500);
+}
+
+.button--variant-link:disabled {
+  border-bottom-color: transparent;
 }

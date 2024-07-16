@@ -1,7 +1,9 @@
-import React from "react";
-import { Spinner } from "../Spinner";
+import React, { useState, useEffect } from "react";
+import { Spinner, SpinnerProps } from "../Spinner";
 import { Icon, IconProps } from "../Icon";
+import { useTheme } from "../../../hooks/useTheme";
 import { FONT_SIZE_CLASS_NAMES } from "../../../constants/class-names/font-size.constants";
+import { ColorName } from "../../../types/colors.types";
 import { ButtonProps } from "./Button.types";
 import { SIZE } from "./Button.constants";
 import styles from "./Button.module.css";
@@ -18,6 +20,10 @@ export const Button = ({
   variant = "filled",
   ...rest
 }: ButtonProps) => {
+  const [spinnerColor, setSpinnerColor] = useState<SpinnerProps["color"]>();
+
+  const { colorScheme } = useTheme();
+
   const classNames = [
     styles.button,
     styles[`button--size-${size}`],
@@ -26,6 +32,32 @@ export const Button = ({
     styles[`button--variant-${variant}-${color}`],
     FONT_SIZE_CLASS_NAMES[size],
   ];
+
+  useEffect(() => {
+    const isThemeColor = (["contrast-theme", "theme"] as ColorName[]).includes(
+      color
+    );
+
+    if (colorScheme === "light") {
+      if (variant === "filled") {
+        setSpinnerColor("light");
+      }
+
+      if (variant === "outline" && isThemeColor) {
+        setSpinnerColor("dark");
+      }
+    }
+
+    if (colorScheme === "dark") {
+      if (variant === "filled" && isThemeColor) {
+        setSpinnerColor("dark");
+      }
+
+      if (variant === "outline" && isThemeColor) {
+        setSpinnerColor("light");
+      }
+    }
+  }, [color, colorScheme, variant]);
 
   return (
     <button
@@ -41,15 +73,7 @@ export const Button = ({
 
       {isLoading && (
         <div className={styles.button__spinner}>
-          <Spinner
-            customSize={`${SIZE[size]}px`}
-            color={
-              variant === "filled" &&
-              (color === "contrast-theme" || color === "theme")
-                ? "theme"
-                : undefined
-            }
-          />
+          <Spinner customSize={`${SIZE[size]}px`} color={spinnerColor} />
         </div>
       )}
 
