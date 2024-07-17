@@ -11,8 +11,8 @@
   position: fixed;
   z-index: 2;
   transition:
-    transform 500ms,
-    visibility 0ms 500ms;
+    transform 200ms,
+    visibility 0ms 200ms;
 }
 
 .drawer__overlay {
@@ -39,6 +39,10 @@
 .drawer__content,
 .drawer__footer {
   padding: 14px 24px;
+}
+
+.drawer__header {
+  padding-right: 60px;
 }
 
 .drawer__footer {
@@ -150,70 +154,80 @@
   width: 100dvw;
 }
 
+.drawer--size-full.drawer--placement-right,
+.drawer--size-full.drawer--placement-left {
+  width: 100dvw;
+}
+
 /* Height sizes */
 
 .drawer--size-s.drawer--placement-top,
 .drawer--size-s.drawer--placement-bottom {
-  height: 70dvh;
+  height: 40dvh;
 }
 
 .drawer--size-m.drawer--placement-top,
 .drawer--size-m.drawer--placement-bottom {
-  height: 80dvh;
+  height: 50dvh;
 }
 
 .drawer--size-l.drawer--placement-top,
 .drawer--size-l.drawer--placement-bottom {
-  height: 90dvh;
+  height: 60dvh;
 }
 
 .drawer--size-xl.drawer--placement-top,
 .drawer--size-xl.drawer--placement-bottom {
+  height: 70dvh;
+}
+
+.drawer--size-full.drawer--placement-top,
+.drawer--size-full.drawer--placement-bottom {
   height: 100dvh;
 }
 
-@media (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   /* Width sizes */
 
   .drawer--size-s.drawer--placement-right,
   .drawer--size-s.drawer--placement-left {
-    width: 20dvw;
+    width: 400px;
   }
 
   .drawer--size-m.drawer--placement-right,
   .drawer--size-m.drawer--placement-left {
-    width: 40dvw;
+    width: 500px;
   }
 
   .drawer--size-l.drawer--placement-right,
   .drawer--size-l.drawer--placement-left {
-    width: 60dvw;
+    width: 600px;
   }
 
   .drawer--size-xl.drawer--placement-right,
   .drawer--size-xl.drawer--placement-left {
-    width: 100dvw;
+    width: 700px;
   }
 
   /* Height sizes */
 
   .drawer--size-s.drawer--placement-top,
   .drawer--size-s.drawer--placement-bottom {
-    height: 20dvh;
+    height: 300px;
   }
 
   .drawer--size-m.drawer--placement-top,
   .drawer--size-m.drawer--placement-bottom {
-    height: 40dvh;
+    height: 350px;
   }
 
   .drawer--size-l.drawer--placement-top,
   .drawer--size-l.drawer--placement-bottom {
-    height: 60dvh;
+    height: 400px;
   }
 
   .drawer--size-xl.drawer--placement-top,
   .drawer--size-xl.drawer--placement-bottom {
-    height: 100dvh;
+    height: 450px;
   }
 }

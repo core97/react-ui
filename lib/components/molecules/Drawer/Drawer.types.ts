@@ -5,5 +5,5 @@ export interface DrawerProps {
   footer?: React.ReactNode | React.ReactNode[];
   header?: React.ReactNode | React.ReactNode[];
   placement?: "top" | "right" | "bottom" | "left";
-  size?: "s" | "m" | "l" | "xl";
+  size?: "s" | "m" | "l" | "xl" | "full";
 }
