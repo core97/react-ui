@@ -1,4 +1,6 @@
+import { ICON_BY_NAME } from "../Icon/Icon.contants";
 import { ColorName } from "../../../types/colors.types";
+import { InputSizeMeasure } from "../../../types/input-size.types";
 
 export interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -6,9 +8,9 @@ export interface ButtonProps
     HTMLButtonElement
   > {
   color?: ColorName;
+  iconLeft?: keyof typeof ICON_BY_NAME;
+  iconRight?: keyof typeof ICON_BY_NAME;
   isLoading?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-  size?: "xs" | "s" | "m" | "l" | "xl";
+  size?: InputSizeMeasure;
   variant?: "filled" | "outline" | "ghost" | "link";
 }

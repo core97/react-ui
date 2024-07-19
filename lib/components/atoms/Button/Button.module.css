@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   white-space: nowrap;
   font-weight: 500;
@@ -31,27 +31,22 @@
 }
 
 .button--size-xs {
-  padding: 4px 8px;
   gap: 8px;
 }
 
 .button--size-s {
-  padding: 6px 12px;
   gap: 12px;
 }
 
 .button--size-m {
-  padding: 8px 16px;
-  gap: 16px;
+  gap: 8px;
 }
 
 .button--size-l {
-  padding: 10px 20px;
   gap: 20px;
 }
 
 .button--size-xl {
-  padding: 12px 24px;
   gap: 24px;
 }
 
@@ -127,23 +122,25 @@
 
 .button--variant-outline-theme,
 .button--variant-outline-contrast-theme {
-  border-color: var(--theme-color-700);
+  border-color: var(--theme-color-500);
   color: var(--contrast-theme-color-900);
 }
 
 .button--variant-outline-theme:hover,
 .button--variant-outline-contrast-theme:hover {
+  border-color: var(--theme-color-700);
   background-color: var(--theme-color-700);
 }
 
 [data-color-scheme="dark"] .button--variant-outline-theme,
 [data-color-scheme="dark"] .button--variant-outline-contrast-theme {
-  border-color: var(--theme-color-600);
+  border-color: var(--theme-color-500);
   color: var(--contrast-theme-color-900);
 }
 
 [data-color-scheme="dark"] .button--variant-outline-theme:hover,
 [data-color-scheme="dark"] .button--variant-outline-contrast-theme:hover {
+  border-color: var(--theme-color-600);
   background-color: var(--theme-color-600);
 }
 

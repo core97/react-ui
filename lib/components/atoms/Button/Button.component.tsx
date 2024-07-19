@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Spinner, SpinnerProps } from "../Spinner";
-import { Icon, IconProps } from "../Icon";
+import { Icon } from "../Icon";
 import { useTheme } from "../../../hooks/useTheme";
 import { FONT_SIZE_CLASS_NAMES } from "../../../constants/class-names/font-size.constants";
+import { INPUT_SIZE_CLASS_NAMES } from "../../../constants/class-names/input-size.constants";
 import { ColorName } from "../../../types/colors.types";
 import { ButtonProps } from "./Button.types";
-import { SIZE } from "./Button.constants";
+import { ICON_SIZE } from "./Button.constants";
 import styles from "./Button.module.css";
 
 export const Button = ({
@@ -14,8 +15,8 @@ export const Button = ({
   children,
   disabled,
   isLoading,
-  leftIcon,
-  rightIcon,
+  iconLeft,
+  iconRight,
   size = "m",
   variant = "filled",
   ...rest
@@ -31,6 +32,7 @@ export const Button = ({
     styles[`button--variant-${variant}`],
     styles[`button--variant-${variant}-${color}`],
     FONT_SIZE_CLASS_NAMES[size],
+    INPUT_SIZE_CLASS_NAMES[size],
   ];
 
   useEffect(() => {
@@ -66,23 +68,17 @@ export const Button = ({
       disabled={isLoading || disabled}
       className={`${classNames.join(" ")} ${className || ""}`}
     >
-      {Boolean(React.isValidElement(leftIcon) && leftIcon.type === Icon) &&
-        React.cloneElement(leftIcon as React.ReactElement<IconProps>, {
-          size: SIZE[size],
-        })}
+      {iconLeft && <Icon name={iconLeft} size={ICON_SIZE[size]} />}
 
       {isLoading && (
         <div className={styles.button__spinner}>
-          <Spinner customSize={`${SIZE[size]}px`} color={spinnerColor} />
+          <Spinner customSize={`${ICON_SIZE[size]}px`} color={spinnerColor} />
         </div>
       )}
 
       {children}
 
-      {Boolean(React.isValidElement(rightIcon) && rightIcon.type === Icon) &&
-        React.cloneElement(rightIcon as React.ReactElement<IconProps>, {
-          size: SIZE[size],
-        })}
+      {iconRight && <Icon name={iconRight} size={ICON_SIZE[size]} />}
     </button>
   );
 };
