@@ -3,6 +3,7 @@
 @import "./classes/backgound-color.css";
 @import "./classes/color.css";
 @import "./classes/font-size.css";
+@import "./classes/input-size.css";
 
 [data-color-scheme="light"] {
   body {
