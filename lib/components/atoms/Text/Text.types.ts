@@ -26,6 +26,7 @@ type TextWeight =
 export interface TextProps {
   children: React.ReactNode;
   as?: TextTagAs;
+  className?: string;
   color?: Color;
   size?: FontSizeMeasure;
   weight?: TextWeight;

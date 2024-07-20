@@ -1,35 +1,47 @@
+:root {
+  --font-size-xs: 12px;
+  --font-size-s: 14px;
+  --font-size-m: 16px;
+  --font-size-l: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 38px;
+  --font-size-5xl: 42px;
+}
+
 .font--size-5xl {
-  font-size: 42px;
+  font-size: var(--font-size-5xl);
 }
 
 .font--size-4xl {
-  font-size: 38px;
+  font-size: var(--font-size-4xl);
 }
 
 .font--size-3xl {
-  font-size: 32px;
+  font-size: var(--font-size-3xl);
 }
 
 .font--size-2xl {
-  font-size: 28px;
+  font-size: var(--font-size-2xl);
 }
 
 .font--size-xl {
-  font-size: 24px;
+  font-size: var(--font-size-xl);
 }
 
 .font--size-l {
-  font-size: 18px;
+  font-size: var(--font-size-l);
 }
 
 .font--size-m {
-  font-size: 16px;
+  font-size: var(--font-size-m);
 }
 
 .font--size-s {
-  font-size: 14px;
+  font-size: var(--font-size-s);
 }
 
 .font--size-xs {
-  font-size: 12px;
+  font-size: var(--font-size-xs);
 }

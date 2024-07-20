@@ -54,10 +54,6 @@
   transition: transform 500ms;
 }
 
-.drawer.drawer--opened ~ body {
-  background-color: red;
-}
-
 .drawer__close-btn {
   position: absolute;
   top: var(--close-btn-space);

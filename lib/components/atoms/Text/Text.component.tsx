@@ -6,9 +6,10 @@ import styles from "./Text.module.css";
 export const Text = ({
   children,
   as = "p",
-  color = 'contrast-theme-900',
+  color = "contrast-theme-900",
   size = "m",
   weight = "500",
+  className,
 }: TextProps) => {
   const Component = as;
 
@@ -16,6 +17,7 @@ export const Text = ({
     FONT_SIZE_CLASS_NAMES[size],
     styles[`font--weight-${weight}`],
     color ? COLOR_CLASS_NAMES[color] : "",
+    className || "",
   ];
 
   return <Component className={classNames.join(" ")}>{children}</Component>;
