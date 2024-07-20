@@ -8,6 +8,11 @@
   border-radius: 6px;
   color: var(--contrast-theme-color-900);
   outline: none;
+  width: -webkit-fill-available;
+}
+
+.input_text::placeholder {
+  color: var(--contrast-theme-color-100);
 }
 
 .input_text:invalid,
