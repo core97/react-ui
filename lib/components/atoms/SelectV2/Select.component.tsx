@@ -9,6 +9,7 @@ import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { INPUT_SIZE_CLASS_NAMES } from "../../../constants/class-names/input-size.constants";
 import { useDisclosure } from "../../../hooks/useDisclosure";
+import { useDistanceToViewport } from "../../../hooks/useDistanceToViewport";
 import { SelectOption } from "./SelectOption";
 import { OptionTag } from "./OptionTag";
 import {
@@ -22,17 +23,15 @@ import {
   getSelectedFromOptions,
   getOptionByValue,
 } from "./Select.helper";
-import { ICON_SIZE } from "./Select.constants";
+import { ICON_SIZE, MAX_HEIGHT_LIST_OPTIONS } from "./Select.constants";
 import styles from "./Select.module.css";
 
 /**
  * TODO:
- * - Detectar si hay espacio por abajo para abrirlo sino por arriba
- * 
- * - Poner el input para buscar
- * 
- * - Estilo cuando está deshabilitado, debe poder abrirse el menú pero no se puede seleccional nada, quitar el efecto del hover
  *
+ * - Poner el input para buscar
+ *
+ * - Estilo cuando está deshabilitado, debe poder abrirse el menú pero no se puede seleccional nada, quitar el efecto del hover
  */
 
 export const Select = forwardRef<
@@ -40,11 +39,16 @@ export const Select = forwardRef<
   SelectMultiValueProps | SelectSingleValueProps
 >((props: SelectMultiValueProps | SelectSingleValueProps, ref) => {
   const [selected, setSelected] = useState<SelectOptionType[]>([]);
+  const [positionToOpen, setPositionToOpen] = useState<"top" | "bottom">(
+    "bottom"
+  );
 
   const selectRef = useRef<HTMLDivElement>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
 
   const { isOpen, onClose, onToggle } = useDisclosure();
+
+  const distance = useDistanceToViewport("bottom", selectRef);
 
   const size = props.size || "m";
 
@@ -99,6 +103,10 @@ export const Select = forwardRef<
     setSelected(getSelectedFromOptions(valueFromProps, props.options));
   }, [props.defaultValue, props.options, props.value]);
 
+  useEffect(() => {
+    setPositionToOpen(distance <= MAX_HEIGHT_LIST_OPTIONS ? "top" : "bottom");
+  }, [distance]);
+
   return (
     <div ref={selectRef} className={styles.wrapper} onBlur={handleOnBlur}>
       <button
@@ -134,6 +142,7 @@ export const Select = forwardRef<
           <Text
             as="span"
             color="contrast-theme-100"
+            size={size}
             className={styles.trigger_button__text}
           >
             {props.placeholder}
@@ -151,7 +160,7 @@ export const Select = forwardRef<
       <ul
         role="listbox"
         aria-hidden={!isOpen}
-        className={`${styles.options_list} ${isOpen ? styles["options_list--opened"] : ""}`}
+        className={`${styles.options_list} ${isOpen ? styles["options_list--opened"] : ""} ${styles[`options_list--open-${positionToOpen}`]}`}
       >
         {props.options?.map((item: SelectOptionType | Group) => {
           if ("group" in item) {

@@ -3,20 +3,11 @@
   display: flex;
   gap: 4px;
   align-items: center;
+  text-align: left;
 }
 
 .wrapper:hover {
   cursor: default;
-}
-
-.text_wrapper {
-  display: grid;
-}
-
-.text_wrapper__content {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .button {

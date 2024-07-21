@@ -29,24 +29,13 @@
   gap: 8px;
 }
 
-.text_wrapper {
-  display: grid;
-}
-
-.text_wrapper__content {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .selected_icon {
-  padding: 0px 1px;
   display: grid;
   place-content: center;
-  border-radius: 50%;
 }
 
-.selected_icon--selected {
+.selected_icon--selected svg {
+  border-radius: 50%;
   color: var(--light-color-900);
   background-color: var(--primary-color-500);
 }

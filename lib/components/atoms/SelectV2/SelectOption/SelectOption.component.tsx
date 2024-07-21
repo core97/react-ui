@@ -38,11 +38,9 @@ export const SelectOption = ({
             {icon}
           </div>
         )}
-        <div className={styles.text_wrapper}>
-          <Text as="span" size={size} className={styles.text_wrapper__content}>
-            {label}
-          </Text>
-        </div>
+        <Text as="span" size={size}>
+          {label}
+        </Text>
       </div>
     </li>
   );

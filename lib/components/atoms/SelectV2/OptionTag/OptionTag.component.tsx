@@ -14,11 +14,9 @@ export const OptionTag = ({ label, onRemove, value, size }: OptionTagProps) => {
 
   return (
     <li className={styles.wrapper}>
-      <div className={styles.text_wrapper}>
-        <Text as="span" size={size} className={styles.text_wrapper__content}>
-          {label}
-        </Text>
-      </div>
+      <Text as="span" size={size}>
+        {label}
+      </Text>
 
       <button type="button" onClick={handleOnClick} className={styles.button}>
         <Icon name="close" size={ICON_SIZE[size]} />
