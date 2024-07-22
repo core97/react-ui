@@ -12,6 +12,7 @@ import { useDisclosure } from "../../../hooks/useDisclosure";
 import { useDistanceToViewport } from "../../../hooks/useDistanceToViewport";
 import { SelectOption } from "./SelectOption";
 import { OptionTag } from "./OptionTag";
+import { SearchInput } from "./SearchInput";
 import {
   Group,
   SelectOption as SelectOptionType,
@@ -23,28 +24,23 @@ import {
   getSelectedFromOptions,
   getOptionByValue,
 } from "./Select.helper";
-import { ICON_SIZE, MAX_HEIGHT_LIST_OPTIONS } from "./Select.constants";
+import { ICON_SIZE } from "./Select.constants";
 import styles from "./Select.module.css";
-
-/**
- * TODO:
- *
- * - Poner el input para buscar
- *
- * - Estilo cuando está deshabilitado, debe poder abrirse el menú pero no se puede seleccional nada, quitar el efecto del hover
- */
 
 export const Select = forwardRef<
   HTMLDivElement,
   SelectMultiValueProps | SelectSingleValueProps
 >((props: SelectMultiValueProps | SelectSingleValueProps, ref) => {
   const [selected, setSelected] = useState<SelectOptionType[]>([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchRegex, setSearchRegex] = useState(new RegExp(""));
   const [positionToOpen, setPositionToOpen] = useState<"top" | "bottom">(
     "bottom"
   );
 
   const selectRef = useRef<HTMLDivElement>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
+  const optionListRef = useRef<HTMLUListElement>(null);
 
   const { isOpen, onClose, onToggle } = useDisclosure();
 
@@ -61,6 +57,8 @@ export const Select = forwardRef<
       }
 
       onClose();
+      setSearchRegex(new RegExp(""));
+      setSearchValue("");
     }
 
     props.onBlur?.(e);
@@ -95,6 +93,8 @@ export const Select = forwardRef<
     triggerButtonRef.current?.focus();
 
     onClose();
+    setSearchRegex(new RegExp(""));
+    setSearchValue("");
   };
 
   useEffect(() => {
@@ -104,7 +104,11 @@ export const Select = forwardRef<
   }, [props.defaultValue, props.options, props.value]);
 
   useEffect(() => {
-    setPositionToOpen(distance <= MAX_HEIGHT_LIST_OPTIONS ? "top" : "bottom");
+    const height = optionListRef.current?.getBoundingClientRect().height;
+
+    if (typeof height === "number") {
+      setPositionToOpen(distance <= height ? "top" : "bottom");
+    }
   }, [distance]);
 
   return (
@@ -114,6 +118,7 @@ export const Select = forwardRef<
         onClick={onToggle}
         ref={triggerButtonRef}
         role="combobox"
+        disabled={props.disabled}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         className={`${styles.trigger_button} ${props.isInvalid ? styles["trigger_button--error"] : ""} ${INPUT_SIZE_CLASS_NAMES[size]}`}
@@ -158,54 +163,73 @@ export const Select = forwardRef<
         </div>
       </button>
       <ul
+        ref={optionListRef}
         role="listbox"
         aria-hidden={!isOpen}
         className={`${styles.options_list} ${isOpen ? styles["options_list--opened"] : ""} ${styles[`options_list--open-${positionToOpen}`]}`}
       >
-        {props.options?.map((item: SelectOptionType | Group) => {
-          if ("group" in item) {
-            return (
-              <li key={item.group}>
-                <header
-                  className={`${styles.options_list__header_group} ${styles[`options_list__header_group--${size}`]}`}
-                >
-                  <Text weight="700">{item.group}</Text>
-                </header>
-                <ul>
-                  {item.options.map((el) => (
-                    <SelectOption
-                      key={el.value}
-                      size={size}
-                      label={el.label}
-                      value={el.value}
-                      icon={el.icon}
-                      onClick={(value) => handleOnChange("ADD", value)}
-                      isSelected={isSelected(
-                        el.value,
-                        selected.map(({ value }) => value)
-                      )}
-                    />
-                  ))}
-                </ul>
-              </li>
-            );
-          }
+        {props.searcher && (
+          <SearchInput
+            size={size}
+            placeholder={props.searcherPlaceholder}
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+              setSearchRegex(new RegExp(e.target.value, "i"));
+            }}
+          />
+        )}
 
-          return (
-            <SelectOption
-              key={item.value}
-              size={size}
-              label={item.label}
-              value={item.value}
-              icon={item.icon}
-              onClick={(value) => handleOnChange("ADD", value)}
-              isSelected={isSelected(
-                item.value,
-                selected.map(({ value }) => value)
-              )}
-            />
-          );
-        })}
+        {props.options
+          ?.filter((item) =>
+            "label" in item ? searchRegex.test(item.label) : true
+          )
+          ?.map((item: SelectOptionType | Group) => {
+            if ("group" in item) {
+              return (
+                <li key={item.group}>
+                  <header
+                    className={`${styles.options_list__header_group} ${styles[`options_list__header_group--${size}`]}`}
+                  >
+                    <Text weight="700">{item.group}</Text>
+                  </header>
+                  <ul>
+                    {item.options
+                      ?.filter((item) => searchRegex.test(item.label))
+                      .map((el) => (
+                        <SelectOption
+                          key={el.value}
+                          size={size}
+                          label={el.label}
+                          value={el.value}
+                          icon={el.icon}
+                          onClick={(value) => handleOnChange("ADD", value)}
+                          isSelected={isSelected(
+                            el.value,
+                            selected.map(({ value }) => value)
+                          )}
+                        />
+                      ))}
+                  </ul>
+                </li>
+              );
+            }
+
+            return (
+              <SelectOption
+                key={item.value}
+                size={size}
+                label={item.label}
+                value={item.value}
+                icon={item.icon}
+                onClick={(value) => handleOnChange("ADD", value)}
+                isSelected={isSelected(
+                  item.value,
+                  selected.map(({ value }) => value)
+                )}
+              />
+            );
+          })}
       </ul>
     </div>
   );

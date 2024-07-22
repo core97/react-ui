@@ -1,0 +1,17 @@
+.search_input_wrapper {
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--theme-color-700);
+  background-color: transparent;
+}
+
+.search_input {
+  width: -webkit-fill-available;
+  border: none;
+  color: var(--contrast-theme-color-900);
+  border-bottom: 1px solid var(--theme-color-700);
+  background-color: transparent;
+}
+
+.search_input:focus {
+  outline: none;
+}

@@ -29,6 +29,12 @@
     var(--primary-color-500) 0px 0px 0px 2px;
 }
 
+.trigger_button:disabled {
+  background-color: var(--theme-color-700);
+  border-color: var(--theme-color-700);
+  cursor: not-allowed;
+}
+
 .trigger_button__text {
   overflow: hidden;
   text-overflow: ellipsis;
