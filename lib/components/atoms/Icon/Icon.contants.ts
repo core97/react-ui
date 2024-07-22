@@ -4,6 +4,7 @@ import { ChevronLeft } from "./library/chevron-left.icon";
 import { ChevronRight } from "./library/chevron-right.icon";
 import { ChevronUp } from "./library/chevron-up.icon";
 import { Close } from "./library/close.icon";
+import { Search } from "./library/search.icon";
 
 export const ICON_BY_NAME = {
   checked: Checked,
@@ -12,4 +13,5 @@ export const ICON_BY_NAME = {
   chevron_right: ChevronRight,
   chevron_up: ChevronUp,
   close: Close,
+  search: Search,
 };
