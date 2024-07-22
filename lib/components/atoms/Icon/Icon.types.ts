@@ -1,10 +1,12 @@
 import { ICON_BY_NAME } from "./Icon.contants";
+import { Color } from "../../../types/colors.types";
 
 export type IconSvgProps = {
-  color?: string;
+  className?: string;
   size?: number;
 };
 
 export interface IconProps extends IconSvgProps {
   name: keyof typeof ICON_BY_NAME;
+  color?: Color;
 }

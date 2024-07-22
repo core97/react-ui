@@ -1,13 +1,13 @@
 import { IconSvgProps } from "../Icon.types";
 
-export function ChevronDown({ color, size }: IconSvgProps) {
+export function ChevronDown({ className, size }: IconSvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       height={size}
       width={size}
-      fill={color}
+      className={className}
     >
       <path
         fill="currentColor"

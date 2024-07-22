@@ -1,12 +1,12 @@
 import { IconSvgProps } from "../Icon.types";
 
-export function Search({ color, size }: IconSvgProps) {
+export function Search({ className, size }: IconSvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
-      fill={color}
+      className={className}
       viewBox="0 0 24 24"
     >
       <path

@@ -1,12 +1,12 @@
 import { IconSvgProps } from "../Icon.types";
 
-export function Close({ color, size }: IconSvgProps) {
+export function Close({ className, size }: IconSvgProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height={size}
       width={size}
-      fill={color}
+      className={className}
       viewBox="0 0 24 24"
     >
       <path
