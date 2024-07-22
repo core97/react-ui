@@ -1,26 +1,34 @@
-import { Props as ReactSelectProps, GroupBase } from "react-select";
-import { UseControllerProps, FieldValues } from "react-hook-form";
+import { InputSizeMeasure } from "../../../types/input-size.types";
 
-export interface SelectOption {
-  value: string;
+export type SelectOption = {
   label: string;
+  value: string;
+  icon?: React.ReactNode;
+};
+
+export type Group = { group: string; options: SelectOption[] };
+
+export interface SelectProps {
+  isInvalid?: boolean;
+  options?: SelectOption[] | Group[];
+  onBlur?: (e: React.FocusEvent<HTMLDivElement, Element>) => void;
+  disabled?: boolean;
+  placeholder?: string;
+  searcher?: boolean;
+  searcherPlaceholder?: string;
+  size?: InputSizeMeasure;
 }
 
-export interface SelectBaseProps<
-  Option extends SelectOption = SelectOption,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>,
-> extends ReactSelectProps<Option, IsMulti, Group> {
-  textHelper?: string;
+export interface SelectSingleValueProps extends SelectProps {
+  defaultValue?: string;
+  isMulti?: false;
+  onChange?: (value: string) => void;
+  value?: string;
 }
 
-export interface SelectFormProps<
-  TFieldValues extends FieldValues,
-  Option extends SelectOption,
-  IsMulti extends boolean = false,
-  Group extends GroupBase<Option> = GroupBase<Option>,
-> extends Omit<
-      SelectBaseProps<Option, IsMulti, Group>,
-      "name" | "defaultValue"
-    >,
-    UseControllerProps<TFieldValues> {}
+export interface SelectMultiValueProps extends SelectProps {
+  defaultValue?: string[];
+  isMulti?: true;
+  onChange?: (value: string[]) => void;
+  value?: string[];
+}
