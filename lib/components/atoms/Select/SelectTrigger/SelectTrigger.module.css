@@ -1,0 +1,50 @@
+.trigger_button {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--theme-color-500);
+  border-radius: 6px;
+  color: var(--contrast-theme-color-900);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.trigger_button--error {
+  border-color: var(--error-color-500);
+}
+
+.trigger_button:hover {
+  cursor: pointer;
+}
+
+.trigger_button:focus {
+  border-color: transparent;
+  box-shadow:
+    var(--primary-color-500) 0px 1px 1px,
+    var(--primary-color-500) 0px 0px 0px 2px;
+}
+
+.trigger_button:disabled {
+  background-color: var(--theme-color-700);
+  border-color: var(--theme-color-700);
+  cursor: not-allowed;
+}
+
+.trigger_button__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trigger_button__icon-wrapper--error {
+  color: var(--error-color-500);
+}
+
+.trigger_button__selected_options_list {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

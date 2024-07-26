@@ -5,15 +5,14 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
-import { Text } from "../Text";
-import { Icon } from "../Icon";
-import { INPUT_SIZE_CLASS_NAMES } from "../../../constants/class-names/input-size.constants";
 import { useDisclosure } from "../../../hooks/useDisclosure";
 import { useDistanceToViewport } from "../../../hooks/useViewportDistance";
 import { useOverflow } from "../../../hooks/useOverflow";
 import { SelectOption } from "./SelectOption";
-import { OptionTag } from "./OptionTag";
 import { SearchInput } from "./SearchInput";
+import { SelectTrigger } from "./SelectTrigger";
+import { SelectOptionList } from "./SelectOptionList";
+import { GroupHeader } from "./GroupHeader";
 import {
   Group,
   SelectOption as SelectOptionType,
@@ -25,7 +24,7 @@ import {
   getSelectedFromOptions,
   getOptionByValue,
 } from "./Select.helper";
-import { ICON_SIZE, OPTION_LIST_HEIGHT } from "./Select.constants";
+import { OPTION_LIST_HEIGHT } from "./Select.constants";
 import styles from "./Select.module.css";
 
 export const Select = forwardRef<
@@ -120,60 +119,19 @@ export const Select = forwardRef<
 
   return (
     <div ref={selectRef} className={styles.wrapper} onBlur={handleOnBlur}>
-      <button
-        type="button"
-        onClick={handleOnClickTrigger}
+      <SelectTrigger
         ref={triggerButtonRef}
-        role="combobox"
+        onClick={handleOnClickTrigger}
+        onClickOptionTag={(value) => handleOnChange("REMOVE", value)}
+        selected={selected}
+        size={size}
         disabled={props.disabled}
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-        className={`${styles.trigger_button} ${props.isInvalid ? styles["trigger_button--error"] : ""} ${INPUT_SIZE_CLASS_NAMES[size]}`}
-      >
-        {!!(props.isMulti && selected.length) && (
-          <ul className={styles.trigger_button__selected_options_list}>
-            {selected.map((item) => (
-              <OptionTag
-                key={item.value}
-                size={size}
-                label={item.label}
-                value={item.value}
-                onRemove={(value) => handleOnChange("REMOVE", value)}
-              />
-            ))}
-          </ul>
-        )}
-
-        {!!(!props.isMulti && selected[0]) && (
-          <Text size={size} className={styles.trigger_button__text}>
-            {selected[0].label}
-          </Text>
-        )}
-
-        {!selected.length && (
-          <Text
-            as="span"
-            color="contrast-theme-100"
-            size={size}
-            className={styles.trigger_button__text}
-          >
-            {props.placeholder}
-          </Text>
-        )}
-
-        <div
-          className={
-            props.isInvalid ? styles["trigger_button__icon-wrapper--error"] : ""
-          }
-        >
-          <Icon name="chevron_down" size={ICON_SIZE[size]} />
-        </div>
-      </button>
-      <ul
-        role="listbox"
-        aria-hidden={!isOpen}
-        className={`${styles.options_list} ${isOpen ? styles["options_list--opened"] : ""} ${styles[`options_list--open-${positionToOpen}`]}`}
-      >
+        isInvalid={props.isInvalid}
+        isMulti={props.isMulti}
+        isOpen={isOpen}
+        placeholder={props.placeholder}
+      />
+      <SelectOptionList isOpen={isOpen} positionToOpen={positionToOpen}>
         {props.searcher && (
           <SearchInput
             size={size}
@@ -194,11 +152,7 @@ export const Select = forwardRef<
             if ("group" in item) {
               return (
                 <li key={item.group}>
-                  <header
-                    className={`${styles.options_list__header_group} ${styles[`options_list__header_group--${size}`]}`}
-                  >
-                    <Text weight="700">{item.group}</Text>
-                  </header>
+                  <GroupHeader size={size}>{item.group}</GroupHeader>
                   <ul>
                     {item.options
                       ?.filter((item) => searchRegex.test(item.label))
@@ -236,7 +190,7 @@ export const Select = forwardRef<
               />
             );
           })}
-      </ul>
+      </SelectOptionList>
     </div>
   );
 });
