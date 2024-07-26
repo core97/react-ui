@@ -8,3 +8,5 @@ export const ICON_SIZE: Record<NonNullable<SelectProps["size"]>, number> = {
   l: 18,
   xl: 20,
 };
+
+export const OPTION_LIST_HEIGHT = 180;

@@ -1,5 +1,6 @@
 import { Button } from "../../atoms/Button";
 import { Icon } from "../../atoms/Icon";
+import { COMPONENT_NAME } from "../../../constants/component-names";
 import { DrawerProps } from "./Drawer.types";
 import styles from "./Drawer.module.css";
 
@@ -31,6 +32,7 @@ export const Drawer = ({
         role="dialog"
         aria-modal
         aria-hidden={!isOpen}
+        data-component={COMPONENT_NAME.DRAWER}
         className={`${styles.drawer}  ${modifierClassNames.join(" ")}`}
       >
         <header className={styles["drawer__header"]}>

@@ -46,7 +46,10 @@
 }
 
 .drawer__footer {
+  background-color: var(--theme-color-900);
   border-top: 1px solid var(--theme-color-600);
+  position: sticky;
+  bottom: 0px;
 }
 
 .drawer.drawer--opened {

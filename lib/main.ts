@@ -11,5 +11,5 @@ export * from "./components/molecules/Drawer";
 export * from "./components/molecules/Sidebar";
 
 export * from "./hooks/useDisclosure";
-export * from "./hooks/useDistanceToViewport";
+export * from "./hooks/useViewportDistance";
 export * from "./hooks/useTheme";

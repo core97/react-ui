@@ -9,7 +9,8 @@ import { Text } from "../Text";
 import { Icon } from "../Icon";
 import { INPUT_SIZE_CLASS_NAMES } from "../../../constants/class-names/input-size.constants";
 import { useDisclosure } from "../../../hooks/useDisclosure";
-import { useDistanceToViewport } from "../../../hooks/useDistanceToViewport";
+import { useDistanceToViewport } from "../../../hooks/useViewportDistance";
+import { useOverflow } from "../../../hooks/useOverflow";
 import { SelectOption } from "./SelectOption";
 import { OptionTag } from "./OptionTag";
 import { SearchInput } from "./SearchInput";
@@ -24,7 +25,7 @@ import {
   getSelectedFromOptions,
   getOptionByValue,
 } from "./Select.helper";
-import { ICON_SIZE } from "./Select.constants";
+import { ICON_SIZE, OPTION_LIST_HEIGHT } from "./Select.constants";
 import styles from "./Select.module.css";
 
 export const Select = forwardRef<
@@ -40,28 +41,37 @@ export const Select = forwardRef<
 
   const selectRef = useRef<HTMLDivElement>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
-  const optionListRef = useRef<HTMLUListElement>(null);
 
   const { isOpen, onClose, onToggle } = useDisclosure();
 
-  const distance = useDistanceToViewport("bottom", selectRef);
+  const distance = useDistanceToViewport(selectRef);
+
+  const { displayOverflow, hideOverflow } = useOverflow(selectRef);
 
   const size = props.size || "m";
 
   useImperativeHandle(ref, () => selectRef.current as HTMLDivElement);
 
   const handleOnBlur = (e: React.FocusEvent<HTMLDivElement, Element>) => {
+    e.stopPropagation();
+
     if (!selectRef.current?.contains(e.relatedTarget)) {
       if (isOpen) {
         triggerButtonRef.current?.focus();
       }
 
+      hideOverflow();
       onClose();
       setSearchRegex(new RegExp(""));
       setSearchValue("");
     }
 
     props.onBlur?.(e);
+  };
+
+  const handleOnClickTrigger = () => {
+    isOpen ? hideOverflow() : displayOverflow();
+    onToggle();
   };
 
   const handleOnChange = (action: "ADD" | "REMOVE", value: string) => {
@@ -92,6 +102,7 @@ export const Select = forwardRef<
 
     triggerButtonRef.current?.focus();
 
+    hideOverflow();
     onClose();
     setSearchRegex(new RegExp(""));
     setSearchValue("");
@@ -104,18 +115,14 @@ export const Select = forwardRef<
   }, [props.defaultValue, props.options, props.value]);
 
   useEffect(() => {
-    const height = optionListRef.current?.getBoundingClientRect().height;
-
-    if (typeof height === "number") {
-      setPositionToOpen(distance <= height ? "top" : "bottom");
-    }
+    setPositionToOpen(distance.bottom <= OPTION_LIST_HEIGHT ? "top" : "bottom");
   }, [distance]);
 
   return (
     <div ref={selectRef} className={styles.wrapper} onBlur={handleOnBlur}>
       <button
         type="button"
-        onClick={onToggle}
+        onClick={handleOnClickTrigger}
         ref={triggerButtonRef}
         role="combobox"
         disabled={props.disabled}
@@ -163,7 +170,6 @@ export const Select = forwardRef<
         </div>
       </button>
       <ul
-        ref={optionListRef}
         role="listbox"
         aria-hidden={!isOpen}
         className={`${styles.options_list} ${isOpen ? styles["options_list--opened"] : ""} ${styles[`options_list--open-${positionToOpen}`]}`}
