@@ -1,15 +1,9 @@
-import React from "react";
+import { SelectOptionListProps } from "./SelectOptionList.types";
 import styles from "./SelectOptionList.module.css";
 
-export const SelectOptionList = ({ children, isOpen, positionToOpen }) => {
-  const classNames = [
-    styles.options_list,
-    isOpen ? styles["options_list--opened"] : "",
-    styles[`options_list--open-${positionToOpen}`],
-  ];
-
+export const SelectOptionList = ({ children }: SelectOptionListProps) => {
   return (
-    <ul role="listbox" aria-hidden={!isOpen} className={classNames.join(" ")}>
+    <ul role="listbox" className={styles.options_list}>
       {children}
     </ul>
   );

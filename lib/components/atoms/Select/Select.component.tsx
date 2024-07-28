@@ -1,4 +1,4 @@
-import React, {
+import {
   useEffect,
   useRef,
   useState,
@@ -6,8 +6,7 @@ import React, {
   forwardRef,
 } from "react";
 import { useDisclosure } from "../../../hooks/useDisclosure";
-import { useDistanceToViewport } from "../../../hooks/useViewportDistance";
-import { useOverflow } from "../../../hooks/useOverflow";
+import { Popover } from "../Popover";
 import { SelectOption } from "./SelectOption";
 import { SearchInput } from "./SearchInput";
 import { SelectTrigger } from "./SelectTrigger";
@@ -24,8 +23,6 @@ import {
   getSelectedFromOptions,
   getOptionByValue,
 } from "./Select.helper";
-import { OPTION_LIST_HEIGHT } from "./Select.constants";
-import styles from "./Select.module.css";
 
 export const Select = forwardRef<
   HTMLDivElement,
@@ -34,43 +31,24 @@ export const Select = forwardRef<
   const [selected, setSelected] = useState<SelectOptionType[]>([]);
   const [searchValue, setSearchValue] = useState("");
   const [searchRegex, setSearchRegex] = useState(new RegExp(""));
-  const [positionToOpen, setPositionToOpen] = useState<"top" | "bottom">(
-    "bottom"
-  );
 
   const selectRef = useRef<HTMLDivElement>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
 
   const { isOpen, onClose, onToggle } = useDisclosure();
 
-  const distance = useDistanceToViewport(selectRef);
-
-  const { displayOverflow, hideOverflow } = useOverflow(selectRef);
-
   const size = props.size || "m";
 
   useImperativeHandle(ref, () => selectRef.current as HTMLDivElement);
 
-  const handleOnBlur = (e: React.FocusEvent<HTMLDivElement, Element>) => {
-    e.stopPropagation();
-
-    if (!selectRef.current?.contains(e.relatedTarget)) {
-      if (isOpen) {
-        triggerButtonRef.current?.focus();
-      }
-
-      hideOverflow();
-      onClose();
-      setSearchRegex(new RegExp(""));
-      setSearchValue("");
+  const handleOnClose = () => {
+    if (isOpen) {
+      triggerButtonRef.current?.focus();
     }
 
-    props.onBlur?.(e);
-  };
-
-  const handleOnClickTrigger = () => {
-    isOpen ? hideOverflow() : displayOverflow();
-    onToggle();
+    onClose();
+    setSearchRegex(new RegExp(""));
+    setSearchValue("");
   };
 
   const handleOnChange = (action: "ADD" | "REMOVE", value: string) => {
@@ -101,7 +79,6 @@ export const Select = forwardRef<
 
     triggerButtonRef.current?.focus();
 
-    hideOverflow();
     onClose();
     setSearchRegex(new RegExp(""));
     setSearchValue("");
@@ -113,84 +90,90 @@ export const Select = forwardRef<
     setSelected(getSelectedFromOptions(valueFromProps, props.options));
   }, [props.defaultValue, props.options, props.value]);
 
-  useEffect(() => {
-    setPositionToOpen(distance.bottom <= OPTION_LIST_HEIGHT ? "top" : "bottom");
-  }, [distance]);
-
   return (
-    <div ref={selectRef} className={styles.wrapper} onBlur={handleOnBlur}>
-      <SelectTrigger
-        ref={triggerButtonRef}
-        onClick={handleOnClickTrigger}
-        onClickOptionTag={(value) => handleOnChange("REMOVE", value)}
-        selected={selected}
-        size={size}
-        disabled={props.disabled}
-        isInvalid={props.isInvalid}
-        isMulti={props.isMulti}
-        isOpen={isOpen}
-        placeholder={props.placeholder}
-      />
-      <SelectOptionList isOpen={isOpen} positionToOpen={positionToOpen}>
-        {props.searcher && (
-          <SearchInput
-            size={size}
-            placeholder={props.searcherPlaceholder}
-            value={searchValue}
-            onChange={(e) => {
-              setSearchValue(e.target.value);
-              setSearchRegex(new RegExp(e.target.value, "i"));
-            }}
-          />
-        )}
+    <Popover
+      ref={selectRef}
+      sizeAsTrigger
+      placement="bottom"
+      isOpen={isOpen}
+      onClose={handleOnClose}
+      onBlur={props.onBlur}
+      trigger={
+        <SelectTrigger
+          ref={triggerButtonRef}
+          onClick={onToggle}
+          onClickOptionTag={(value) => handleOnChange("REMOVE", value)}
+          selected={selected}
+          size={size}
+          disabled={props.disabled}
+          isInvalid={props.isInvalid}
+          isMulti={props.isMulti}
+          isOpen={isOpen}
+          placeholder={props.placeholder}
+        />
+      }
+      content={
+        <SelectOptionList>
+          {props.searcher && (
+            <SearchInput
+              size={size}
+              placeholder={props.searcherPlaceholder}
+              value={searchValue}
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+                setSearchRegex(new RegExp(e.target.value, "i"));
+              }}
+            />
+          )}
 
-        {props.options
-          ?.filter((item) =>
-            "label" in item ? searchRegex.test(item.label) : true
-          )
-          ?.map((item: SelectOptionType | Group) => {
-            if ("group" in item) {
+          {props.options
+            ?.filter((item) =>
+              "label" in item ? searchRegex.test(item.label) : true
+            )
+            ?.map((item: SelectOptionType | Group) => {
+              if ("group" in item) {
+                return (
+                  <li key={item.group}>
+                    <GroupHeader size={size}>{item.group}</GroupHeader>
+                    <ul>
+                      {item.options
+                        ?.filter((item) => searchRegex.test(item.label))
+                        .map((el) => (
+                          <SelectOption
+                            key={el.value}
+                            size={size}
+                            label={el.label}
+                            value={el.value}
+                            icon={el.icon}
+                            onClick={(value) => handleOnChange("ADD", value)}
+                            isSelected={isSelected(
+                              el.value,
+                              selected.map(({ value }) => value)
+                            )}
+                          />
+                        ))}
+                    </ul>
+                  </li>
+                );
+              }
+
               return (
-                <li key={item.group}>
-                  <GroupHeader size={size}>{item.group}</GroupHeader>
-                  <ul>
-                    {item.options
-                      ?.filter((item) => searchRegex.test(item.label))
-                      .map((el) => (
-                        <SelectOption
-                          key={el.value}
-                          size={size}
-                          label={el.label}
-                          value={el.value}
-                          icon={el.icon}
-                          onClick={(value) => handleOnChange("ADD", value)}
-                          isSelected={isSelected(
-                            el.value,
-                            selected.map(({ value }) => value)
-                          )}
-                        />
-                      ))}
-                  </ul>
-                </li>
+                <SelectOption
+                  key={item.value}
+                  size={size}
+                  label={item.label}
+                  value={item.value}
+                  icon={item.icon}
+                  onClick={(value) => handleOnChange("ADD", value)}
+                  isSelected={isSelected(
+                    item.value,
+                    selected.map(({ value }) => value)
+                  )}
+                />
               );
-            }
-
-            return (
-              <SelectOption
-                key={item.value}
-                size={size}
-                label={item.label}
-                value={item.value}
-                icon={item.icon}
-                onClick={(value) => handleOnChange("ADD", value)}
-                isSelected={isSelected(
-                  item.value,
-                  selected.map(({ value }) => value)
-                )}
-              />
-            );
-          })}
-      </SelectOptionList>
-    </div>
+            })}
+        </SelectOptionList>
+      }
+    />
   );
 });
