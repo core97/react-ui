@@ -1,0 +1,91 @@
+:root {
+  --popover-spacing: 8px;
+}
+
+.popover_wrapper {
+  position: relative;
+}
+
+.popover_content {
+  position: absolute;
+  z-index: 3;
+  visibility: hidden;
+  background-color: var(--theme-color-900);
+  border: 1px solid var(--theme-color-500);
+  border-radius: 6px;
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.popover_content--opened {
+  visibility: visible;
+}
+
+.popover_content--size-as-trigger {
+  overflow: hidden;
+}
+
+[data-placement="top"] .popover_content--size-as-trigger,
+[data-placement="bottom"] .popover_content--size-as-trigger {
+  width: 100%;
+}
+
+[data-placement="right"] .popover_content--size-as-trigger,
+[data-placement="left"] .popover_content--size-as-trigger {
+  height: 100%;
+}
+
+.popover_content--position-top {
+  margin-bottom: var(--popover-spacing);
+  bottom: 100%;
+}
+
+.popover_content--position-bottom {
+  margin-top: var(--popover-spacing);
+
+  top: 100%;
+}
+
+.popover_content--position-right {
+  margin-left: var(--popover-spacing);
+  left: 100%;
+}
+
+.popover_content--position-left {
+  margin-right: var(--popover-spacing);
+  right: 100%;
+}
+
+[data-placement="right"] .popover_content--alignment-top,
+[data-placement="left"] .popover_content--alignment-top {
+  bottom: 0px;
+}
+
+[data-placement="right"] .popover_content--alignment-bottom,
+[data-placement="left"] .popover_content--alignment-bottom {
+  top: 0px;
+}
+
+[data-placement="top"] .popover_content--alignment-right,
+[data-placement="bottom"] .popover_content--alignment-right {
+  left: 0px;
+}
+
+[data-placement="top"] .popover_content--alignment-left,
+[data-placement="bottom"] .popover_content--alignment-left {
+  right: 0px;
+}
+
+[data-placement="top"] .popover_content--alignment-center,
+[data-placement="bottom"] .popover_content--alignment-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+[data-placement="right"] .popover_content--alignment-center,
+[data-placement="left"] .popover_content--alignment-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
