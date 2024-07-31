@@ -102,17 +102,18 @@
 
 .calendar_day--today,
 .calendar_day:hover,
-.calendar_day--selected.calendar_range_middle,
-.calendar_day--selected.calendar_range_middle:hover {
+.calendar_day.calendar_day--selected.calendar_range_middle,
+.calendar_day.calendar_day--selected.calendar_range_middle:hover {
   border-radius: var(--calendar-border-radius-day);
-  background-color: var(--theme-color-800);
+  background-color: var(--primary-color-100);
+  opacity: 0.6;
 }
 
 [data-color-scheme="dark"] .calendar_day--today,
 [data-color-scheme="dark"] .calendar_day:hover,
 [data-color-scheme="dark"] .calendar_day--selected.calendar_range_middle,
 [data-color-scheme="dark"] .calendar_day--selected.calendar_range_middle:hover {
-  background-color: var(--theme-color-600);
+  background-color: var(--primary-color-900);
 }
 
 .calendar_day.calendar_day--selected,
@@ -120,18 +121,18 @@
 .calendar_day--selected.calendar_day--range_start:hover,
 .calendar_day--selected.calendar_day--range_end:hover {
   border-radius: var(--calendar-border-radius-day);
-  background-color: var(--contrast-theme-color-900);
+  background-color: var(--primary-color-500);
 }
 
 .calendar_day--selected button {
-  color: var(--theme-color-900);
+  color: var(--light-color-900);
 }
 
-.calendar_day--selected.calendar_range_middle,
-.calendar_day--selected.calendar_range_middle:hover {
+.calendar_day.calendar_day--selected.calendar_range_middle,
+.calendar_day.calendar_day--selected.calendar_range_middle:hover {
   border-radius: 0px;
 }
 
 .calendar_day--outside button {
-  color: var(--theme-color-300);
+  color: var(--light-color-100);
 }

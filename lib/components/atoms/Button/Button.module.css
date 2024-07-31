@@ -133,7 +133,7 @@
 .button--variant-outline-theme:hover,
 .button--variant-outline-contrast-theme:hover {
   border-color: var(--theme-color-700);
-  background-color: var(--theme-color-700);
+  background-color: var(--theme-color-800);
 }
 
 [data-color-scheme="dark"] .button--variant-outline-theme,

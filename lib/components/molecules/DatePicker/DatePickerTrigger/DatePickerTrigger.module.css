@@ -1,0 +1,69 @@
+.trigger_button {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--theme-color-500);
+  border-radius: 6px;
+  color: var(--contrast-theme-color-900);
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease-out;
+}
+
+.trigger_button--size-xs {
+  gap: var(--input-padding-x-xs);
+}
+
+.trigger_button--size-s {
+  gap: var(--input-padding-x-s);
+}
+
+.trigger_button--size-m {
+  gap: var(--input-padding-x-m);
+}
+
+.trigger_button--size-l {
+  gap: var(--input-padding-x-l);
+}
+
+.trigger_button--size-xl {
+  gap: var(--input-padding-x-xl);
+}
+
+.trigger_button--error {
+  border-color: var(--error-color-500);
+}
+
+.trigger_button:hover {
+  cursor: pointer;
+  border-color: var(--theme-color-700);
+  background-color: var(--theme-color-800);
+}
+
+[data-color-scheme="dark"] .trigger_button {
+  border-color: var(--theme-color-500);
+  color: var(--contrast-theme-color-900);
+}
+
+[data-color-scheme="dark"] .trigger_button:hover {
+  border-color: var(--theme-color-600);
+  background-color: var(--theme-color-600);
+}
+
+.trigger_button:focus {
+  border-color: transparent;
+  box-shadow:
+    var(--primary-color-500) 0px 1px 1px,
+    var(--primary-color-500) 0px 0px 0px 2px;
+}
+
+.trigger_button:disabled {
+  background-color: var(--theme-color-700);
+  border-color: var(--theme-color-700);
+  cursor: not-allowed;
+}
+
+.trigger_button__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

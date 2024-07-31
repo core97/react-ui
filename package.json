@@ -58,6 +58,7 @@
     "vite-plugin-lib-inject-css": "^2.1.1"
   },
   "dependencies": {
+    "date-fns": "^3.6.0",
     "react-day-picker": "^9.0.4",
     "react-hook-form": "^7.51.5"
   }

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { OptionTag } from "../OptionTag";
 import { Text } from "../../Text";
 import { Icon } from "../../Icon";
