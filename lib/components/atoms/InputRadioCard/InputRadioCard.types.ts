@@ -1,3 +1,4 @@
+import { IconProps } from "../Icon";
 import { InputSizeMeasure } from "../../../types/input-size.types";
 
 export interface InputRadioCardProps
@@ -8,7 +9,9 @@ export interface InputRadioCardProps
     >,
     "type" | "size"
   > {
-  children?: React.ReactNode;
+  icon?: IconProps["name"];
+  label?: string;
   isInvalid?: boolean;
+  direction?: "horizontal" | "vertical";
   size?: InputSizeMeasure;
 }
