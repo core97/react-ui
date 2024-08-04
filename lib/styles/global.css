@@ -1,9 +1,11 @@
 @import "./reset.css";
+@import "./font.css";
 @import "./colors.css";
 @import "./classes/backgound-color.css";
 @import "./classes/color.css";
 @import "./classes/font-size.css";
 @import "./classes/input-size.css";
+@import "./classes/spacing.css";
 
 [data-color-scheme="light"] {
   body {
@@ -61,4 +63,5 @@
 
 body {
   background-color: var(--theme-color-900);
+  font-family: "Montserrat", Calibri, Tahoma, sans-serif;
 }
