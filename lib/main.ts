@@ -2,6 +2,7 @@ export * from "./components/atoms/Button";
 export * from "./components/atoms/Calendar";
 export * from "./components/atoms/Card";
 export * from "./components/atoms/Icon";
+export * from "./components/atoms/InputRadioCard";
 export * from "./components/atoms/InputText";
 export * from "./components/atoms/Popover";
 export * from "./components/atoms/Select";
