@@ -7,6 +7,7 @@ export const Text = ({
   children,
   as = "p",
   color = "contrast-theme-900",
+  htmlFor,
   size = "m",
   weight = "500",
   className,
@@ -20,5 +21,12 @@ export const Text = ({
     className || "",
   ];
 
-  return <Component className={classNames.join(" ")}>{children}</Component>;
+  return (
+    <Component
+      className={classNames.join(" ")}
+      {...(Component === "label" && htmlFor && { htmlFor })}
+    >
+      {children}
+    </Component>
+  );
 };

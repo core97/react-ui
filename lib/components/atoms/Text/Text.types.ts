@@ -8,6 +8,7 @@ type TextTagAs =
   | "h4"
   | "h5"
   | "h6"
+  | "label"
   | "p"
   | "details"
   | "span";
@@ -28,6 +29,10 @@ export interface TextProps {
   as?: TextTagAs;
   className?: string;
   color?: Color;
+  htmlFor?: React.DetailedHTMLProps<
+    React.LabelHTMLAttributes<HTMLLabelElement>,
+    HTMLLabelElement
+  >["htmlFor"];
   size?: FontSizeMeasure;
   weight?: TextWeight;
 }
