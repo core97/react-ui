@@ -9,6 +9,10 @@
   transition: background-color 0.2s ease-out;
 }
 
+.trigger_button:focus {
+  outline: none;
+}
+
 .trigger_button--size-xs {
   gap: var(--input-padding-x-xs);
 }
