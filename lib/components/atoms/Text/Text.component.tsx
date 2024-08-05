@@ -11,6 +11,7 @@ export const Text = ({
   size = "m",
   weight = "500",
   className,
+  role,
 }: TextProps) => {
   const Component = as;
 
@@ -24,6 +25,7 @@ export const Text = ({
   return (
     <Component
       className={classNames.join(" ")}
+      role={role}
       {...(Component === "label" && htmlFor && { htmlFor })}
     >
       {children}

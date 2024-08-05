@@ -33,6 +33,7 @@ export interface TextProps {
     React.LabelHTMLAttributes<HTMLLabelElement>,
     HTMLLabelElement
   >["htmlFor"];
+  role?: React.HtmlHTMLAttributes<HTMLElement>["role"];
   size?: FontSizeMeasure;
   weight?: TextWeight;
 }

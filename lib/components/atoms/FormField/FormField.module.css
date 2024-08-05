@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  gap: 12px;
+  gap: 10px;
 }
 
 .container--direction-row {
