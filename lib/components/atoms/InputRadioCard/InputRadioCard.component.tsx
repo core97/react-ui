@@ -25,7 +25,7 @@ export const InputRadioCard = forwardRef<HTMLInputElement, InputRadioCardProps>(
           ref={ref}
           id={id}
           type="radio"
-          className={styles.input}
+          className={`${styles.input} ${props.isInvalid ? styles["input--is-invalid"] : ""}`}
           {...(props?.required && { "aria-required": "true" })}
           {...(props.isInvalid && { "aria-invalid": "true" })}
         />

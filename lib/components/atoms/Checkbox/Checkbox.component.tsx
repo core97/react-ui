@@ -6,7 +6,7 @@ import styles from "./Checkbox.module.css";
 export const Checkbox = ({ size = "m", isInvalid, ...rest }: CheckboxProps) => {
   return (
     <label
-      className={`${styles.container} ${styles[`container--size-${size}`]}`}
+      className={`${styles.container} ${styles[`container--size-${size}`]} ${isInvalid ? styles["container--is-invalid"] : ""}`}
     >
       <input
         type="checkbox"

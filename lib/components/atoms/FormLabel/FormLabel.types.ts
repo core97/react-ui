@@ -1,3 +1,5 @@
 import { TextProps } from "../Text";
 
-export type FormLabelProps = TextProps;
+export interface FormLabelProps extends TextProps {
+  isRequired?: boolean;
+}

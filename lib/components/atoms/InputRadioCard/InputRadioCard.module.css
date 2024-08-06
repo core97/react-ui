@@ -105,6 +105,11 @@
   border-color: var(--primary-color-500);
 }
 
+.input--is-invalid + .card_wrapper {
+  color: var(--error-color-500);
+  border-color: var(--error-color-500);
+}
+
 .card_wrapper:hover {
   background-color: var(--theme-color-800);
 }

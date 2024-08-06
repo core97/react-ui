@@ -76,6 +76,12 @@
     var(--primary-color-500) 0px 0px 0px 2px;
 }
 
+.container--is-invalid input ~ .checkmark {
+  box-shadow:
+    var(--error-color-500) 0px 1px 1px,
+    var(--error-color-500) 0px 0px 0px 2px;
+}
+
 .checkmark:after {
   content: "";
   position: absolute;
