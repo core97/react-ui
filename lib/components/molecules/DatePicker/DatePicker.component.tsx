@@ -15,7 +15,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
   (props, ref) => {
     const [selected, setSelected] = useState<string[]>([]);
 
-    const { isOpen, onClose, onToggle } = useDisclosure();
+    const { isOpen, onClose, onOpen } = useDisclosure();
 
     const size = props.size || "m";
 
@@ -99,6 +99,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         isOpen={isOpen}
         className={props.className}
         onBlur={props.onBlur}
+        onOpen={onOpen}
         onClose={onClose}
         trigger={
           <DatePickerTrigger
@@ -106,7 +107,6 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             disabled={props.disabled}
             isInvalid={props.isInvalid}
             locale={props.calendarConfig?.locale}
-            onClick={onToggle}
             size={size}
             placeholder={props.placeholder}
             selected={selected}

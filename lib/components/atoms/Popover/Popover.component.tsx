@@ -1,36 +1,44 @@
 import {
   useState,
   useRef,
-  useEffect,
   useCallback,
   useImperativeHandle,
   forwardRef,
+  useLayoutEffect,
+  useEffect,
+  useId,
 } from "react";
+import { ButtonProps } from "../Button";
 import { useOverflow } from "../../../hooks/useOverflow";
+import { POPOVER_CLICK_TRIGGER_EVENT } from "./Popover.constants";
 import {
   PopoverProps,
   PopoverPositionX,
   PopoverPositionY,
 } from "./Popover.types";
 import styles from "./Popover.module.css";
+import React from "react";
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   (
     {
       content,
-      isOpen,
-      onClose,
       trigger,
       className,
       placement = "bottom",
       sizeAsTrigger,
       onBlur,
+      isOpen,
+      onClose,
+      onOpen,
     },
     ref
   ) => {
     const [positionY, setPositionY] = useState<PopoverPositionY | undefined>();
     const [positionX, setPositionX] = useState<PopoverPositionX | undefined>();
     const [isCalculated, setIsCalculated] = useState(false);
+
+    const id = useId();
 
     const position =
       placement === "bottom" || placement === "top" ? positionY : positionX;
@@ -111,7 +119,15 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       }
     };
 
-    useEffect(() => {
+    const handleOnClick = () => {
+      const toggleEvent = new CustomEvent(POPOVER_CLICK_TRIGGER_EVENT, {
+        detail: { id },
+      });
+
+      document.dispatchEvent(toggleEvent);
+    };
+
+    useLayoutEffect(() => {
       if (isOpen) {
         calculatePosition();
         displayOverflow();
@@ -121,6 +137,21 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       }
     }, [calculatePosition, displayOverflow, hideOverflow, isOpen]);
 
+    useEffect(() => {
+      // @ts-expect-error event handling
+      function handleOnToggle(event) {
+        event.detail.id === id ? onOpen() : onClose();
+      }
+
+      document.addEventListener(POPOVER_CLICK_TRIGGER_EVENT, handleOnToggle);
+
+      return () =>
+        document.removeEventListener(
+          POPOVER_CLICK_TRIGGER_EVENT,
+          handleOnToggle
+        );
+    }, [id, onClose, onOpen]);
+
     return (
       <div
         ref={wrapperRef}
@@ -129,9 +160,14 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
         data-placement={position}
         data-alignment={alignment}
       >
-        <div ref={triggerRef} aria-haspopup="dialog" aria-expanded={!!isOpen}>
-          {trigger}
-        </div>
+        {React.isValidElement(trigger) &&
+          React.cloneElement(trigger as React.ReactElement<ButtonProps>, {
+            ...trigger.props,
+            onClick: handleOnClick,
+            ref: triggerRef,
+            "aria-haspopup": "dialog",
+            "aria-expanded": !!isOpen,
+          })}
 
         {isOpen && (
           <div

@@ -5,9 +5,9 @@ import { NonNullable } from "../../../../types/utils.types";
 type DatePickerTriggerSize = NonNullable<DatePickerProps['size']>
 
 export interface DatePickerTriggerProps {
-  onClick: () => void;
   size: DatePickerTriggerSize;
   mode: NonNullable<CalendarProps['mode']>;
+  onClick?: () => void;
   selected?: string[];
   disabled?: boolean;
   isInvalid?: boolean;

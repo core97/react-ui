@@ -4,6 +4,7 @@ export type PopoverPositionX = "right" | "left";
 export interface PopoverProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpen: () => void;
   trigger: React.ReactNode;
   content: React.ReactNode | React.ReactNode[];
   className?: string;
