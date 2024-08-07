@@ -5,6 +5,7 @@ import { ChevronLeft } from "./library/chevron-left.icon";
 import { ChevronRight } from "./library/chevron-right.icon";
 import { ChevronUp } from "./library/chevron-up.icon";
 import { Close } from "./library/close.icon";
+import { MenuDots } from "./library/menu-dots.icon";
 import { Search } from "./library/search.icon";
 
 export const ICON_BY_NAME = {
@@ -15,5 +16,6 @@ export const ICON_BY_NAME = {
   chevron_right: ChevronRight,
   chevron_up: ChevronUp,
   close: Close,
+  menu_dots: MenuDots,
   search: Search,
 };
