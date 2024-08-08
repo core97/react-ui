@@ -1,7 +1,6 @@
 import {
   useState,
   useRef,
-  useCallback,
   useImperativeHandle,
   forwardRef,
   useLayoutEffect,
@@ -9,8 +8,9 @@ import {
   useId,
 } from "react";
 import { ButtonProps } from "../Button";
-import { useOverflow } from "../../../hooks/useOverflow";
+import { useDisclosure } from "../../../hooks/useDisclosure";
 import { POPOVER_CLICK_TRIGGER_EVENT } from "./Popover.constants";
+import { calculatePosition } from "./Popover.helper";
 import {
   PopoverProps,
   PopoverPositionX,
@@ -36,9 +36,20 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
   ) => {
     const [positionY, setPositionY] = useState<PopoverPositionY | undefined>();
     const [positionX, setPositionX] = useState<PopoverPositionX | undefined>();
-    const [isCalculated, setIsCalculated] = useState(false);
+
+    const popoverHandler = useDisclosure();
 
     const id = useId();
+
+    const isControlledFromParent = Boolean(
+      typeof isOpen === "boolean" && onOpen && onClose
+    );
+
+    const open = isControlledFromParent ? onOpen : popoverHandler.onOpen;
+    const close = isControlledFromParent ? onClose : popoverHandler.onClose;
+    const isPopoverOpened = isControlledFromParent
+      ? isOpen
+      : popoverHandler.isOpen;
 
     const position =
       placement === "bottom" || placement === "top" ? positionY : positionX;
@@ -51,96 +62,53 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
     const triggerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    const { displayOverflow, hideOverflow } = useOverflow(wrapperRef);
-
     useImperativeHandle(ref, () => wrapperRef.current as HTMLDivElement);
 
     const contentClassNames = [
       styles.popover_content,
       sizeAsTrigger ? styles[`popover_content--size-as-trigger`] : "",
-      isOpen && isCalculated ? styles[`popover_content--opened`] : "",
-      isCalculated ? styles[`popover_content--alignment-${alignment}`] : "",
-      isCalculated && position
-        ? styles[`popover_content--position-${position}`]
-        : "",
+      isPopoverOpened
+        ? styles[`popover_content--opened`]
+        : styles[`popover_content--hide`],
+      styles[`popover_content--alignment-${alignment}`],
+      position ? styles[`popover_content--position-${position}`] : "",
     ];
-
-    const calculatePosition = useCallback(() => {
-      const triggerRect = triggerRef.current?.getBoundingClientRect();
-      const contentRect = contentRef.current?.getBoundingClientRect();
-
-      if (triggerRect && contentRect) {
-        const popoverHeight = contentRef.current?.offsetHeight ?? 0;
-        const availableSpaceBelow = window.innerHeight - triggerRect.bottom;
-        const availableSpaceAbove = triggerRect.top;
-
-        if (availableSpaceBelow < popoverHeight) {
-          setPositionY("top");
-        } else if (availableSpaceAbove < popoverHeight) {
-          setPositionY("bottom");
-        } else {
-          setPositionY(
-            placement === "bottom" || placement === "top"
-              ? placement
-              : undefined
-          );
-        }
-
-        const diffWidth = Math.abs(
-          (contentRef.current?.offsetWidth ?? 0) -
-            (triggerRef.current?.offsetWidth ?? 0)
-        );
-
-        const availableSpaceRight = window.innerWidth - triggerRect.right;
-        const availableSpaceLeft = triggerRect.left;
-
-        if (availableSpaceRight < diffWidth) {
-          setPositionX("left");
-        } else if (availableSpaceLeft < diffWidth) {
-          setPositionX("right");
-        } else {
-          setPositionX(
-            placement === "left" || placement === "right"
-              ? placement
-              : undefined
-          );
-        }
-
-        setIsCalculated(true);
-      }
-    }, [placement]);
 
     const handleOnBlur: React.FocusEventHandler<HTMLDivElement> = (e) => {
       e.stopPropagation();
 
       if (!wrapperRef.current?.contains(e.relatedTarget)) {
-        onClose();
+        close?.();
         onBlur?.(e);
       }
     };
 
     const handleOnClick = () => {
-      const toggleEvent = new CustomEvent(POPOVER_CLICK_TRIGGER_EVENT, {
+      const clickTriggerEvent = new CustomEvent(POPOVER_CLICK_TRIGGER_EVENT, {
         detail: { id },
       });
 
-      document.dispatchEvent(toggleEvent);
+      document.dispatchEvent(clickTriggerEvent);
     };
 
     useLayoutEffect(() => {
       if (isOpen) {
-        calculatePosition();
-        displayOverflow();
+        const position = calculatePosition({
+          contentRef,
+          placement,
+          triggerRef,
+        });
+
+        setPositionX(position.x);
+        setPositionY(position.y);
         contentRef.current?.focus();
-      } else {
-        hideOverflow();
       }
-    }, [calculatePosition, displayOverflow, hideOverflow, isOpen]);
+    }, [isOpen, placement]);
 
     useEffect(() => {
       // @ts-expect-error event handling
       function handleOnToggle(event) {
-        event.detail.id === id ? onOpen() : onClose();
+        event.detail.id === id ? open?.() : close?.();
       }
 
       document.addEventListener(POPOVER_CLICK_TRIGGER_EVENT, handleOnToggle);
@@ -150,7 +118,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
           POPOVER_CLICK_TRIGGER_EVENT,
           handleOnToggle
         );
-    }, [id, onClose, onOpen]);
+    }, [close, id, open]);
 
     return (
       <div
@@ -169,17 +137,15 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
             "aria-expanded": !!isOpen,
           })}
 
-        {isOpen && (
-          <div
-            ref={contentRef}
-            role="dialog"
-            aria-modal="true"
-            className={contentClassNames.join(" ")}
-            tabIndex={1}
-          >
-            {content}
-          </div>
-        )}
+        <div
+          ref={contentRef}
+          role="dialog"
+          aria-modal="true"
+          className={contentClassNames.join(" ")}
+          tabIndex={1}
+        >
+          {content}
+        </div>
       </div>
     );
   }

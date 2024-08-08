@@ -9,7 +9,6 @@
 .popover_content {
   position: absolute;
   z-index: 3;
-  visibility: hidden;
   background-color: var(--theme-color-900);
   border: 1px solid var(--theme-color-500);
   border-radius: 6px;
@@ -20,7 +19,11 @@
 }
 
 .popover_content--opened {
-  visibility: visible;
+  display: block;
+}
+
+.popover_content--hide {
+  display: none;
 }
 
 .popover_content--size-as-trigger {
