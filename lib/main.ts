@@ -18,7 +18,7 @@ export * from "./components/molecules/ColorSchemeToggle";
 export * from "./components/molecules/DatePicker";
 export * from "./components/molecules/Drawer";
 export * from "./components/molecules/Sidebar";
+export * from "./components/molecules/Table";
 
 export * from "./hooks/useDisclosure";
-export * from "./hooks/useViewportDistance";
 export * from "./hooks/useTheme";
