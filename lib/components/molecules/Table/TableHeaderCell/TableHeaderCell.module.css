@@ -1,0 +1,22 @@
+.cell {
+  cursor: pointer;
+}
+
+.cell_wrapper {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  color: var(--light-color-100);
+}
+
+[data-color-schem="dark"] .cell_wrapper {
+  color: var(--contrast-theme-color-100);
+}
+
+.icon_wrapper {
+  width: 16px;
+  height: 16px;
+}

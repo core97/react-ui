@@ -1,0 +1,15 @@
+:root {
+  --table-border-radius: 6px;
+}
+
+[data-color-scheme="light"] {
+  body {
+    --table-border-color: var(--light-color-700);
+  }
+}
+
+[data-color-scheme="dark"] {
+  body {
+    --table-border-color: var(--dark-color-100);
+  }
+}
