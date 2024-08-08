@@ -1,3 +1,7 @@
+import { ArrowDown } from "./library/arrow-down.icon";
+import { ArrowLeft } from "./library/arrow-left.icon";
+import { ArrowRight } from "./library/arrow-right.icon";
+import { ArrowUp } from "./library/arrow-up.icon";
 import { Calendar } from "./library/calendar.icon";
 import { Checked } from "./library/checked.icon";
 import { ChevronDown } from "./library/chevron-down.icon";
@@ -9,6 +13,10 @@ import { MenuDots } from "./library/menu-dots.icon";
 import { Search } from "./library/search.icon";
 
 export const ICON_BY_NAME = {
+  arrow_down: ArrowDown,
+  arrow_left: ArrowLeft,
+  arrow_right: ArrowRight,
+  arrow_up: ArrowUp,
   calendar: Calendar,
   checked: Checked,
   chevron_down: ChevronDown,
