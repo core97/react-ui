@@ -12,6 +12,6 @@ export interface InputTextProps
   iconLeft?: keyof typeof ICON_BY_NAME;
   iconRight?: keyof typeof ICON_BY_NAME;
   isInvalid?: boolean;
-  size?: InputSizeMeasure;
+  size?: keyof typeof InputSizeMeasure;
   type?: "email" | "number" | "password" | "search" | "tel" | "text" | "url";
 }

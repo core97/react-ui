@@ -10,7 +10,7 @@ export const TableHeaderCell = ({
   return (
     <th
       {...restProps}
-      className={`${styles.cell} ${restProps.className || ""}`}
+      className={`${restProps.onClick ? styles[`cell--clickable`] : ""} ${restProps.className || ""}`}
     >
       <div className={styles.cell_wrapper}>
         {children}

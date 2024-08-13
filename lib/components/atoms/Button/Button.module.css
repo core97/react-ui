@@ -30,6 +30,10 @@
   color: transparent !important;
 }
 
+.button--full-width {
+  width: 100%;
+}
+
 .button--size-xs {
   gap: 8px;
 }

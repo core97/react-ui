@@ -1,3 +1,5 @@
+import { ButtonProps } from "../../atoms/Button";
+
 export type RowContent = Record<string, string | React.ReactNode>;
 
 export type Row<T extends RowContent> = {
@@ -5,10 +7,11 @@ export type Row<T extends RowContent> = {
   id: string;
 };
 
-export type TableAction<T extends RowContent> = {
+export interface TableAction<T extends RowContent>
+  extends Pick<ButtonProps, "iconLeft" | "iconRight" | "color"> {
   label: string;
   onClick: (row: Row<T>) => void;
-};
+}
 
 export type SortType = "asc" | "desc";
 

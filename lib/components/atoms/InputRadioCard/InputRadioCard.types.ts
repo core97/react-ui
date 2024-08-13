@@ -13,5 +13,5 @@ export interface InputRadioCardProps
   label?: string;
   isInvalid?: boolean;
   direction?: "horizontal" | "vertical";
-  size?: InputSizeMeasure;
+  size?: keyof typeof InputSizeMeasure;
 }

@@ -5,7 +5,6 @@
 @import "./classes/color.css";
 @import "./classes/font-size.css";
 @import "./classes/input-size.css";
-@import "./classes/spacing.css";
 @import "./variables/table.css";
 
 [data-color-scheme="light"] {

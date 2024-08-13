@@ -10,7 +10,7 @@ export interface DatePickerBaseProps
   isInvalid?: boolean;
   onBlur?: (e: React.FocusEvent<HTMLDivElement, Element>) => void;
   placeholder?: string;
-  size?: InputSizeMeasure;
+  size?: keyof typeof InputSizeMeasure;
 }
 
 export interface DatePickerSingleProps extends DatePickerBaseProps {

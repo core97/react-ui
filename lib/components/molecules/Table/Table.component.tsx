@@ -39,15 +39,17 @@ export const Table = <T extends RowContent>({
   };
 
   const handleOnClickHeaderCell = (columnKey: keyof typeof columns) => {
+    if (!onSorting) return;
+
     if (columnKey !== sorting?.field) {
       setSorting({ field: columnKey, type: "asc" });
-      onSorting?.({ field: columnKey, type: "asc" });
+      onSorting({ field: columnKey, type: "asc" });
     } else if (columnKey === sorting?.field && sorting.type === "asc") {
       setSorting({ field: columnKey, type: "desc" });
-      onSorting?.({ field: columnKey, type: "desc" });
+      onSorting({ field: columnKey, type: "desc" });
     } else if (columnKey === sorting?.field && sorting.type === "desc") {
       setSorting(undefined);
-      onSorting?.();
+      onSorting();
     }
   };
 
@@ -69,7 +71,9 @@ export const Table = <T extends RowContent>({
             {Object.entries(columns).map(([key, value]) => (
               <TableHeaderCell
                 key={key}
-                onClick={() => handleOnClickHeaderCell(key)}
+                onClick={
+                  onSorting ? () => handleOnClickHeaderCell(key) : undefined
+                }
                 sortType={sorting?.field === key ? sorting.type : undefined}
               >
                 {value}
@@ -110,6 +114,10 @@ export const Table = <T extends RowContent>({
                               onClick={() => action.onClick(row)}
                               size="s"
                               variant="ghost"
+                              isFullWidth
+                              color={action.color}
+                              iconLeft={action.iconLeft}
+                              iconRight={action.iconRight}
                             >
                               {action.label}
                             </Button>

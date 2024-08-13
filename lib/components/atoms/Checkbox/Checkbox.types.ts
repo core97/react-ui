@@ -9,5 +9,5 @@ export interface CheckboxProps
     "type" | "size"
   > {
   isInvalid?: boolean;
-  size?: InputSizeMeasure;
+  size?: keyof typeof InputSizeMeasure;
 }

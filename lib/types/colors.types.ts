@@ -100,14 +100,15 @@ export type Color =
   | "error-800"
   | "error-900";
 
-export type ColorName =
-  | "primary"
-  | "secondary"
-  | "theme"
-  | "contrast-theme"
-  | "light"
-  | "dark"
-  | "success"
-  | "info"
-  | "warning"
-  | "error";
+export enum ColorName {
+  primary = "primary",
+  secondary = "secondary",
+  theme = "theme",
+  "contrast-theme" = "contrast-theme",
+  light = "light",
+  dark = "dark",
+  success = "success",
+  info = "info",
+  warning = "warning",
+  error = "error",
+}

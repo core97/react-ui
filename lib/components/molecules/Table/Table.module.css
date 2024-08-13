@@ -23,8 +23,11 @@
 
 .table th,
 .table td {
-  padding: 16px 12px;
-} 
+  /* For "td" elements works as min-height */
+  /* @see https://stackoverflow.com/questions/19432092/can-i-use-a-min-height-for-table-tr-or-td */
+  height: 30px;
+  padding: 12px;
+}
 
 .actions_list {
   list-style: none;

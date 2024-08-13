@@ -6,5 +6,5 @@ export interface TextareaProps
     HTMLTextAreaElement
   > {
   isInvalid?: boolean;
-  size?: InputSizeMeasure;
+  size?: keyof typeof InputSizeMeasure;
 }

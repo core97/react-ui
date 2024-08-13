@@ -16,6 +16,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color = "contrast-theme",
       children,
       disabled,
+      isFullWidth,
       isLoading,
       iconLeft,
       iconRight,
@@ -33,6 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       styles.button,
       styles[`button--size-${size}`],
       isLoading ? styles[`button--loading`] : "",
+      isFullWidth ? styles[`button--full-width`] : "",
       styles[`button--variant-${variant}`],
       styles[`button--variant-${variant}-${color}`],
       FONT_SIZE_CLASS_NAMES[size],
@@ -41,7 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     useEffect(() => {
       const isThemeColor = (
-        ["contrast-theme", "theme"] as ColorName[]
+        ["contrast-theme", "theme"] as Array<keyof typeof ColorName>
       ).includes(color);
 
       if (colorScheme === "light") {

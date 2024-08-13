@@ -16,7 +16,7 @@ export interface SelectProps {
   placeholder?: string;
   searcher?: boolean;
   searcherPlaceholder?: string;
-  size?: InputSizeMeasure;
+  size?: keyof typeof InputSizeMeasure;
 }
 
 export interface SelectSingleValueProps extends SelectProps {
