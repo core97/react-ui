@@ -1,9 +1,17 @@
+export enum CardAs {
+  article = "article",
+  section = "section",
+  div = "div",
+  form = "form",
+  button = "button",
+}
+
 interface CardAsArticleProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLElement>,
     HTMLElement
   > {
-  as: "article";
+  as: `${CardAs.article}`;
 }
 
 interface CardAsSectionProps
@@ -11,7 +19,7 @@ interface CardAsSectionProps
     React.HTMLAttributes<HTMLElement>,
     HTMLElement
   > {
-  as: "section";
+  as: `${CardAs.section}`;
 }
 
 interface CardAsDivProps
@@ -19,7 +27,7 @@ interface CardAsDivProps
     React.HTMLAttributes<HTMLDivElement>,
     HTMLDivElement
   > {
-  as: "div";
+  as: `${CardAs.div}`;
 }
 
 interface CardAsFormProps
@@ -27,7 +35,7 @@ interface CardAsFormProps
     React.FormHTMLAttributes<HTMLFormElement>,
     HTMLFormElement
   > {
-  as: "form";
+  as: `${CardAs.form}`;
 }
 
 interface CardAsButtonProps
@@ -35,7 +43,7 @@ interface CardAsButtonProps
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  as: "button";
+  as: `${CardAs.button}`;
 }
 
 export type CardProps =
