@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Card } from "./Card.component";
+import { Text } from "../Text";
 import { CardProps, CardAs } from "./Card.types";
 
 export default {
@@ -30,5 +31,5 @@ const Template: StoryFn<CardProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   as: "div",
-  children: "Lorem ipsum",
+  children: <Text>Lorem ipsum</Text>,
 };
