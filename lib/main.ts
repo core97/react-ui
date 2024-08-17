@@ -22,4 +22,5 @@ export * from "./components/molecules/Sidebar";
 export * from "./components/molecules/Table";
 
 export * from "./hooks/useDisclosure";
+export * from "./hooks/usePagination";
 export * from "./hooks/useTheme";
