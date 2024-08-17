@@ -17,6 +17,7 @@ export * from "./components/atoms/Textarea";
 export * from "./components/molecules/ColorSchemeToggle";
 export * from "./components/molecules/DatePicker";
 export * from "./components/molecules/Drawer";
+export * from "./components/molecules/Modal";
 export * from "./components/molecules/Sidebar";
 export * from "./components/molecules/Table";
 
