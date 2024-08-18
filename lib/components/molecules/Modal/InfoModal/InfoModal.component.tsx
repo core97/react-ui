@@ -20,7 +20,7 @@ export const InfoModal = ({
       {Boolean(primaryButton || secondaryButton) && (
         <footer className={styles.footer}>
           {secondaryButton && (
-            <Button {...secondaryButton} variant="ghost">
+            <Button {...secondaryButton} variant="outline">
               {secondaryButton.label}
             </Button>
           )}

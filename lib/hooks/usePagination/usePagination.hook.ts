@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
+import { type PaginationParams } from "../../types/pagination.types";
 
 export function usePagination(params?: { total?: number; limit?: number }) {
-  const [pagination, setPagination] = useState<{ skip: number; limit: number }>(
+  const [pagination, setPagination] = useState<PaginationParams>(
     {
       limit: params?.limit ?? 10,
       skip: 0,
     }
   );
 
-  const [pages, setPages] = useState<number>();
+  const [totalPages, setTotalPages] = useState<number>();
 
   const [currentPage, setCurrentPage] = useState<number>();
 
@@ -37,7 +38,7 @@ export function usePagination(params?: { total?: number; limit?: number }) {
    * Calculate total pages
    */
   useEffect(() => {
-    setPages(Math.ceil((params?.total ?? 0) / pagination.limit));
+    setTotalPages(Math.ceil((params?.total ?? 0) / pagination.limit));
   }, [pagination.limit, params?.total]);
 
   /**
@@ -50,7 +51,7 @@ export function usePagination(params?: { total?: number; limit?: number }) {
   return {
     currentPage,
     pagination,
-    pages,
+    pages: totalPages,
     onChangePage,
     onNextPage,
     onPreviousPage,
