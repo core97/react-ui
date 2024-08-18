@@ -14,7 +14,7 @@ export const Pagination = ({
   onNextPage,
   onPreviousPage,
   options,
-  size = 'xs',
+  size = 's',
 }: PaginationProps) => {
   const pages = useMemo(() => {
     if (totalPages <= PAGES_TO_SHOW) {

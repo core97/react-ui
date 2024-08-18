@@ -14,6 +14,7 @@ export * from "./components/atoms/Spinner";
 export * from "./components/atoms/Text";
 export * from "./components/atoms/Textarea";
 
+export * from "./components/molecules/Chart";
 export * from "./components/molecules/ColorSchemeToggle";
 export * from "./components/molecules/DatePicker";
 export * from "./components/molecules/Drawer";
