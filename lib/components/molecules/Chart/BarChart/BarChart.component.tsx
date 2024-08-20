@@ -20,7 +20,8 @@ export const BarChart = ({
   legendIsVisible,
 }: BarChartProps) => {
   const { colorScheme } = useTheme();
-  const colors = Object.values(COLORS)
+
+  const colors = Object.values(COLORS);
 
   return (
     <ResponsiveContainer width="100%" height={height}>
@@ -45,10 +46,10 @@ export const BarChart = ({
           labelClassName={styles.tooltip__label}
         />
         {legendIsVisible && <Legend />}
-        {Object.keys(data?.[0])
+        {Object.keys(data[0])
           .filter((key) => key !== "name")
           .map((key, index) => (
-            <Bar dataKey={key} fill={colors[index]} radius={[6, 6, 6, 6]} />
+            <Bar dataKey={key} fill={colors[index]} radius={[4, 4, 4, 4]} />
           ))}
       </Chart>
     </ResponsiveContainer>

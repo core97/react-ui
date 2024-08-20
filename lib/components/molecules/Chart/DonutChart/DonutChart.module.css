@@ -1,0 +1,18 @@
+.tooltip__wrapper {
+  border-radius: 6px;
+  border-color: var(--theme-color-500);
+  background-color: var(--theme-color-900) !important;
+  font-size: var(--font-size-xs);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.tooltip__label {
+  color: var(--contrast-theme-color-900);
+  font-weight: 600;
+}
+
+.label {
+  fill: var(--contrast-theme-color-900);
+}
