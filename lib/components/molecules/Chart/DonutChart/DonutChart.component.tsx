@@ -1,3 +1,4 @@
+import { useState, useRef, useLayoutEffect } from "react";
 import {
   PieChart,
   Pie,
@@ -8,16 +9,21 @@ import {
 } from "recharts";
 import { useTheme } from "../../../../hooks/useTheme";
 import { COLORS } from "../Chart.contstants";
-import { adjustRadiusForNewHeight } from "./DonutChart.helper";
 import { DonutChartProps } from "./DonutChart.types";
 import styles from "./DonutChart.module.css";
 
 export const DonutChart = ({
   data,
-  height = 200,
   legendIsVisible,
   totalIsVisible,
 }: DonutChartProps) => {
+  const [size, setSize] = useState({
+    height: 0,
+    width: 0,
+  });
+
+  const chartRef = useRef<HTMLDivElement>(null);
+
   const { colorScheme } = useTheme();
 
   const colors = Object.values(COLORS);
@@ -27,23 +33,32 @@ export const DonutChart = ({
     fill: colors[index],
   }));
 
-  const radius = adjustRadiusForNewHeight(55, 80, +height);
+  useLayoutEffect(() => {
+    setSize({
+      height: chartRef.current?.clientHeight ?? 0,
+      width: chartRef.current?.clientWidth ?? 0
+    });
+  }, []);
 
   return (
-    <ResponsiveContainer width="100%" height={height}>
+    <ResponsiveContainer
+      minHeight={100}
+      width="100%"
+      height="100%"
+      ref={chartRef}
+    >
       <PieChart data={dataWithColors}>
         <Pie
           data={dataWithColors}
           dataKey="value"
           nameKey="name"
-          innerRadius={radius.innerRadius}
-          outerRadius={radius.outerRadius}
+          innerRadius="50%"
           stroke="none"
         >
           {totalIsVisible && (
             <Label
               position="center"
-              fontSize={`${+height / 12.5}px`}
+              fontSize={`${(size.height + size.width) / 28}px`}
               value={data.reduce((acc, item) => acc + item.value, 0)}
               className={styles.label}
               fontWeight={700}

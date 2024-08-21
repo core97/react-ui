@@ -6,7 +6,7 @@ export type BarChartDataItem = {
   [key: string]: number | string;
 };
 
-export interface BarChartProps extends Pick<BarProps, "height" | "layout"> {
+export interface BarChartProps extends Pick<BarProps, "layout"> {
   data: BarChartDataItem[];
   legendIsVisible?: boolean;
 }

@@ -15,7 +15,6 @@ import styles from "./BarChart.module.css";
 
 export const BarChart = ({
   data,
-  height = 200,
   layout = "horizontal",
   legendIsVisible,
 }: BarChartProps) => {
@@ -24,7 +23,7 @@ export const BarChart = ({
   const colors = Object.values(COLORS);
 
   return (
-    <ResponsiveContainer width="100%" height={height}>
+    <ResponsiveContainer minHeight={100} width="100%" height="100%">
       <Chart data={data} layout={layout}>
         <CartesianGrid
           vertical={false}

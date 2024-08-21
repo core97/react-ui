@@ -1,11 +1,9 @@
-import { PieProps } from "recharts";
-
 export type DonutChartDataItem = {
   name: string;
   value: number;
 };
 
-export interface DonutChartProps extends Pick<PieProps, "height"> {
+export interface DonutChartProps {
   data: DonutChartDataItem[];
   legendIsVisible?: boolean;
   totalIsVisible?: boolean;
