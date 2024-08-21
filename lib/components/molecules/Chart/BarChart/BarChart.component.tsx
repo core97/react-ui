@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useTheme } from "../../../../hooks/useTheme";
+import { CustomTooltip } from "../CustomTooltip";
 import { COLORS } from "../Chart.contstants";
 import { BarChartProps } from "./BarChart.types";
 import styles from "./BarChart.module.css";
@@ -49,11 +50,9 @@ export const BarChart = ({
             />
           </>
         )}
-
         <Tooltip
           cursor={{ opacity: colorScheme === "dark" ? 0.1 : 0.3 }}
-          wrapperClassName={styles.tooltip__wrapper}
-          labelClassName={styles.tooltip__label}
+          content={(props) => <CustomTooltip {...props} />}
         />
         {legendIsVisible && <Legend />}
         {Object.keys(data[0])

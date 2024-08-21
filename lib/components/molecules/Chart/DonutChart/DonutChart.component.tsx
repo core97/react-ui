@@ -8,6 +8,7 @@ import {
   Label,
 } from "recharts";
 import { useTheme } from "../../../../hooks/useTheme";
+import { CustomTooltip } from "../CustomTooltip";
 import { COLORS } from "../Chart.contstants";
 import { DonutChartProps } from "./DonutChart.types";
 import styles from "./DonutChart.module.css";
@@ -67,8 +68,7 @@ export const DonutChart = ({
         </Pie>
         <Tooltip
           cursor={{ opacity: colorScheme === "dark" ? 0.1 : 0.3 }}
-          wrapperClassName={styles.tooltip__wrapper}
-          labelClassName={styles.tooltip__label}
+          content={(props) => <CustomTooltip {...props} />}
         />
         {legendIsVisible && <Legend />}
       </PieChart>

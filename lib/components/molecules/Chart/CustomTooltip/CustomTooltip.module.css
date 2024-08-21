@@ -1,0 +1,33 @@
+.container {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--theme-color-500);
+  background-color: var(--theme-color-900);
+}
+
+.content {
+  margin-top: 8px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color_indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.item_content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
