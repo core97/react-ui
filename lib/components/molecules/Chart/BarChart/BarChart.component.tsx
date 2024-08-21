@@ -30,15 +30,26 @@ export const BarChart = ({
           className={styles.cartesian_grid}
           opacity={colorScheme === "dark" ? 0.1 : 0.3}
         />
-        <YAxis hide />
-        <XAxis
-          axisLine={false}
-          tickLine={false}
-          tickMargin={8}
-          height={20}
-          dataKey="name"
-          className={styles.x_axis}
-        />
+        {layout === "vertical" && (
+          <>
+            <YAxis dataKey="name" type="category" />
+            <XAxis type="number" />
+          </>
+        )}
+        {layout === "horizontal" && (
+          <>
+            <YAxis hide />
+            <XAxis
+              axisLine={false}
+              tickLine={false}
+              tickMargin={8}
+              height={20}
+              dataKey="name"
+              className={styles.x_axis}
+            />
+          </>
+        )}
+
         <Tooltip
           cursor={{ opacity: colorScheme === "dark" ? 0.1 : 0.3 }}
           wrapperClassName={styles.tooltip__wrapper}
