@@ -27,14 +27,22 @@ export const BarChart = ({
     <ResponsiveContainer minHeight={100} width="100%" height="100%">
       <Chart data={data} layout={layout}>
         <CartesianGrid
-          vertical={false}
+          vertical={layout !== "horizontal"}
+          horizontal={layout !== "vertical"}
           className={styles.cartesian_grid}
           opacity={colorScheme === "dark" ? 0.1 : 0.3}
         />
         {layout === "vertical" && (
           <>
-            <YAxis dataKey="name" type="category" />
-            <XAxis type="number" />
+            <YAxis
+              dataKey="name"
+              type="category"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              className={styles.axis}
+            />
+            <XAxis type="number" hide />
           </>
         )}
         {layout === "horizontal" && (
@@ -44,15 +52,14 @@ export const BarChart = ({
               axisLine={false}
               tickLine={false}
               tickMargin={8}
-              height={20}
               dataKey="name"
-              className={styles.x_axis}
+              className={styles.axis}
             />
           </>
         )}
         <Tooltip
           cursor={{ opacity: colorScheme === "dark" ? 0.1 : 0.3 }}
-          content={(props) => <CustomTooltip {...props} />}
+          content={(props) => <CustomTooltip variant="bar" {...props} />}
         />
         {legendIsVisible && <Legend />}
         {Object.keys(data[0])

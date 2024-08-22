@@ -1,6 +1,6 @@
 import { useState, useRef, useLayoutEffect } from "react";
 import {
-  PieChart,
+  PieChart as Chart,
   Pie,
   Tooltip,
   Legend,
@@ -10,14 +10,16 @@ import {
 import { useTheme } from "../../../../hooks/useTheme";
 import { CustomTooltip } from "../CustomTooltip";
 import { COLORS } from "../Chart.contstants";
-import { DonutChartProps } from "./DonutChart.types";
-import styles from "./DonutChart.module.css";
+import { calcFontSizeLabel } from "./PieChart.helper";
+import { PieChartProps } from "./PieChart.types";
+import styles from "./PieChart.module.css";
 
-export const DonutChart = ({
+export const PieChart = ({
   data,
+  type = "pie",
+  labelIsVisible,
   legendIsVisible,
-  totalIsVisible,
-}: DonutChartProps) => {
+}: PieChartProps) => {
   const [size, setSize] = useState({
     height: 0,
     width: 0,
@@ -34,11 +36,16 @@ export const DonutChart = ({
     fill: colors[index],
   }));
 
+  const total = data.reduce((acc, item) => acc + item.value, 0);
+  const fontSizeDivider = calcFontSizeLabel(total);
+
   useLayoutEffect(() => {
-    setSize({
-      height: chartRef.current?.clientHeight ?? 0,
-      width: chartRef.current?.clientWidth ?? 0
-    });
+    if (chartRef.current) {
+      setSize({
+        height: chartRef.current?.clientHeight ?? 0,
+        width: chartRef.current?.clientWidth ?? 0,
+      });
+    }
   }, []);
 
   return (
@@ -48,30 +55,32 @@ export const DonutChart = ({
       height="100%"
       ref={chartRef}
     >
-      <PieChart data={dataWithColors}>
+      <Chart data={dataWithColors}>
         <Pie
           data={dataWithColors}
           dataKey="value"
           nameKey="name"
-          innerRadius="50%"
+          innerRadius={type === "doughnut" ? "50%" : undefined}
           stroke="none"
+          label={labelIsVisible}
         >
-          {totalIsVisible && (
+          {type === "doughnut" && (
             <Label
               position="center"
-              fontSize={`${(size.height + size.width) / 28}px`}
-              value={data.reduce((acc, item) => acc + item.value, 0)}
+              fontSize={`${size.height / fontSizeDivider}px`}
+              value={total}
               className={styles.label}
               fontWeight={700}
             />
           )}
         </Pie>
+        {legendIsVisible && <Legend layout="horizontal" align="center" />}
+
         <Tooltip
           cursor={{ opacity: colorScheme === "dark" ? 0.1 : 0.3 }}
-          content={(props) => <CustomTooltip {...props} />}
+          content={(props) => <CustomTooltip variant="pie" {...props} />}
         />
-        {legendIsVisible && <Legend />}
-      </PieChart>
+      </Chart>
     </ResponsiveContainer>
   );
 };

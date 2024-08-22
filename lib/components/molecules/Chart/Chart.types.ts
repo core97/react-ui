@@ -1,11 +1,11 @@
 import { BarChartProps } from "./BarChart";
-import { DonutChartProps } from "./DonutChart";
+import { PieChartProps } from "./PieChart";
 
 export enum ChartVariant {
   bar = "bar",
-  donut = "donut",
+  pie = "pie",
 }
 
 export type ChartProps =
   | ({ variant: `${ChartVariant.bar}` } & BarChartProps)
-  | ({ variant: `${ChartVariant.donut}` } & DonutChartProps);
+  | ({ variant: `${ChartVariant.pie}` } & PieChartProps);
