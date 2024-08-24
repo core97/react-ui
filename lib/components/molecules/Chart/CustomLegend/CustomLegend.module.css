@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.list_item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.color_indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}

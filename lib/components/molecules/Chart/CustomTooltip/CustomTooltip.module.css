@@ -5,8 +5,11 @@
   background-color: var(--theme-color-900);
 }
 
+.header {
+  margin-bottom: 8px;
+}
+
 .content {
-  margin-top: 8px;
   list-style: none;
   display: flex;
   flex-direction: column;

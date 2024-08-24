@@ -7,9 +7,11 @@ import {
   Legend,
   Bar,
   ResponsiveContainer,
+  LabelList,
 } from "recharts";
 import { useTheme } from "../../../../hooks/useTheme";
 import { CustomTooltip } from "../CustomTooltip";
+import { CustomLegend } from "../CustomLegend";
 import { COLORS } from "../Chart.contstants";
 import { BarChartProps } from "./BarChart.types";
 import styles from "./BarChart.module.css";
@@ -18,14 +20,28 @@ export const BarChart = ({
   data,
   layout = "horizontal",
   legendIsVisible,
+  quantityLabelIsVisible,
 }: BarChartProps) => {
   const { colorScheme } = useTheme();
 
   const colors = Object.values(COLORS);
 
   return (
-    <ResponsiveContainer minHeight={100} width="100%" height="100%">
-      <Chart data={data} layout={layout}>
+    <ResponsiveContainer
+      minHeight={100}
+      width="100%"
+      height="100%"
+      className={styles.container}
+    >
+      <Chart
+        data={data}
+        layout={layout}
+        accessibilityLayer
+        margin={{
+          ...(layout === "vertical" && quantityLabelIsVisible && { right: 42 }),
+          ...(layout === "horizontal" && quantityLabelIsVisible && { top: 24 }),
+        }}
+      >
         <CartesianGrid
           vertical={layout !== "horizontal"}
           horizontal={layout !== "vertical"}
@@ -61,11 +77,25 @@ export const BarChart = ({
           cursor={{ opacity: colorScheme === "dark" ? 0.1 : 0.3 }}
           content={(props) => <CustomTooltip variant="bar" {...props} />}
         />
-        {legendIsVisible && <Legend />}
+        {legendIsVisible && (
+          <Legend
+            wrapperStyle={{ paddingTop: "10px" }}
+            content={(props) => <CustomLegend {...props} />}
+          />
+        )}
         {Object.keys(data[0])
           .filter((key) => key !== "name")
           .map((key, index) => (
-            <Bar dataKey={key} fill={colors[index]} radius={[4, 4, 4, 4]} />
+            <Bar dataKey={key} fill={colors[index]} radius={[4, 4, 4, 4]}>
+              {quantityLabelIsVisible && (
+                <LabelList
+                  position={layout === "horizontal" ? "top" : "right"}
+                  offset={layout === "horizontal" ? 12 : 8}
+                  fontSize={12}
+                  className={styles.quantity_label}
+                />
+              )}
+            </Bar>
           ))}
       </Chart>
     </ResponsiveContainer>

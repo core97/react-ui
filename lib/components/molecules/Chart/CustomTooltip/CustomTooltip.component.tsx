@@ -11,9 +11,12 @@ export const CustomTooltip = ({
   if (active && payload?.length) {
     return (
       <div className={styles.container}>
-        <Text size="xs" weight="600">
-          {label}
-        </Text>
+        <header className={styles.header}>
+          <Text size="xs" weight="600">
+            {label}
+          </Text>
+        </header>
+
         <ul className={styles.content}>
           {payload.map((el) => (
             <li key={el.color} className={styles.item}>

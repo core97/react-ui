@@ -9,4 +9,5 @@ export type BarChartDataItem = {
 export interface BarChartProps extends Pick<BarProps, "layout"> {
   data: BarChartDataItem[];
   legendIsVisible?: boolean;
+  quantityLabelIsVisible?: boolean;
 }
