@@ -12,5 +12,7 @@ export interface PieChartProps {
   data: PieChartDataItem[];
   legendIsVisible?: boolean;
   labelIsVisible?: boolean;
+  quantityLabelIsVisible?: boolean;
+  quantityLabel?: string;
   type?: keyof typeof PieChartType;
 }

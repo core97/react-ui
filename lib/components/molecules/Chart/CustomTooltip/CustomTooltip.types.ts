@@ -7,4 +7,5 @@ import { ChartVariant } from "../Chart.types";
 
 export type CustomTooltipProps = TooltipProps<ValueType, NameType> & {
   variant: keyof typeof ChartVariant;
+  total?: number;
 };

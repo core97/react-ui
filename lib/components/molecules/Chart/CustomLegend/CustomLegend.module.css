@@ -1,4 +1,5 @@
 .container {
+  border: 1px solid red;
   display: flex;
   justify-content: center;
 }
@@ -6,8 +7,10 @@
 .list {
   list-style: none;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  column-gap: 20px;
+  row-gap: 12px;
 }
 
 .list_item {

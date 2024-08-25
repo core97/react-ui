@@ -9,16 +9,23 @@ import {
 } from "recharts";
 import { useTheme } from "../../../../hooks/useTheme";
 import { CustomTooltip } from "../CustomTooltip";
+import { CustomLegend } from "../CustomLegend";
 import { COLORS } from "../Chart.contstants";
 import { calcFontSizeLabel } from "./PieChart.helper";
 import { PieChartProps } from "./PieChart.types";
 import styles from "./PieChart.module.css";
 
+/**
+ * TODO: hacer lo del donut
+ */
+
 export const PieChart = ({
   data,
   type = "pie",
-  labelIsVisible,
   legendIsVisible,
+  labelIsVisible,
+  quantityLabel,
+  quantityLabelIsVisible,
 }: PieChartProps) => {
   const [size, setSize] = useState({
     height: 0,
@@ -62,23 +69,73 @@ export const PieChart = ({
           nameKey="name"
           innerRadius={type === "doughnut" ? "50%" : undefined}
           stroke="none"
-          label={labelIsVisible}
+          labelLine={false}
+          {...(labelIsVisible && {
+            label: ({ payload, ...props }) => {
+              return (
+                <text
+                  cx={props.cx}
+                  cy={props.cy}
+                  x={props.x}
+                  y={props.y}
+                  textAnchor={props.textAnchor}
+                  dominantBaseline={props.dominantBaseline}
+                  fill="#ffffff"
+                  className={styles.quantity_label}
+                >
+                  {payload?.payload?.name}
+                </text>
+              );
+            },
+          })}
         >
-          {type === "doughnut" && (
+          {Boolean(type === "doughnut" && quantityLabelIsVisible) && (
             <Label
-              position="center"
-              fontSize={`${size.height / fontSizeDivider}px`}
-              value={total}
-              className={styles.label}
-              fontWeight={700}
+              content={({ viewBox }) => {
+                if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                  return (
+                    <text
+                      x={viewBox.cx}
+                      y={viewBox.cy}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                    >
+                      <tspan
+                        x={viewBox.cx}
+                        y={viewBox.cy}
+                        className={styles.donut_quantity_label}
+                        style={{
+                          fontSize: `${size.height / fontSizeDivider}px`,
+                        }}
+                      >
+                        {total}
+                      </tspan>
+                      <tspan
+                        x={viewBox.cx}
+                        y={(viewBox.cy || 0) + 24}
+                        className={styles.donut_description_label}
+                      >
+                        {quantityLabel}
+                      </tspan>
+                    </text>
+                  );
+                }
+              }}
             />
           )}
         </Pie>
-        {legendIsVisible && <Legend layout="horizontal" align="center" />}
+
+        {legendIsVisible && <Legend content={<CustomLegend variant="pie" />} />}
 
         <Tooltip
           cursor={{ opacity: colorScheme === "dark" ? 0.1 : 0.3 }}
-          content={(props) => <CustomTooltip variant="pie" {...props} />}
+          content={(props) => (
+            <CustomTooltip
+              {...props}
+              variant="pie"
+              total={data.reduce((acc, el) => acc + el.value, 0)}
+            />
+          )}
         />
       </Chart>
     </ResponsiveContainer>

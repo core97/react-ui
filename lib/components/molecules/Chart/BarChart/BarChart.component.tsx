@@ -80,7 +80,7 @@ export const BarChart = ({
         {legendIsVisible && (
           <Legend
             wrapperStyle={{ paddingTop: "10px" }}
-            content={(props) => <CustomLegend {...props} />}
+            content={(props) => <CustomLegend {...props} variant="bar" />}
           />
         )}
         {Object.keys(data[0])
