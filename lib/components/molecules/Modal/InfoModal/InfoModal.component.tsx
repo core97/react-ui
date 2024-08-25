@@ -12,7 +12,7 @@ export const InfoModal = ({
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Text size="xl" as="h2" weight="600">
+        <Text size="xl" as="h2" weight="600w">
           {title}
         </Text>
       </header>

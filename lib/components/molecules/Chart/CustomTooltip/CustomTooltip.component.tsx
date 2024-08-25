@@ -15,7 +15,7 @@ export const CustomTooltip = ({
       <div className={styles.container}>
         {label && (
           <header className={styles.header}>
-            <Text size="xs" weight="600">
+            <Text size="xs" weight="600w">
               {label}
             </Text>
           </header>
@@ -34,7 +34,7 @@ export const CustomTooltip = ({
                   style={{ backgroundColor: el.color ?? el.payload.fill }}
                 ></div>
                 <div className={styles.item_content}>
-                  <Text size="xs" weight="300" color="light-100">
+                  <Text size="xs" weight="300w" color="light-100">
                     {variant === "bar" ? el.dataKey : el.name}
                   </Text>
                   <Text size="xs">

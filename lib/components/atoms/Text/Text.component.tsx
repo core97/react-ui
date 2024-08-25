@@ -1,6 +1,6 @@
 import { COLOR_CLASS_NAMES } from "../../../constants/class-names/color.constants";
 import { FONT_SIZE_CLASS_NAMES } from "../../../constants/class-names/font-size.constants";
-import { TextProps } from "./Text.types";
+import { TextProps, TextWeight } from "./Text.types";
 import styles from "./Text.module.css";
 
 export const Text = ({
@@ -9,7 +9,7 @@ export const Text = ({
   color = "contrast-theme-900",
   htmlFor,
   size = "m",
-  weight = "500",
+  weight = "500w",
   className,
   role,
 }: TextProps) => {
@@ -17,7 +17,7 @@ export const Text = ({
 
   const classNames = [
     FONT_SIZE_CLASS_NAMES[size],
-    styles[`font--weight-${weight}`],
+    styles[`font--weight-${TextWeight[weight]}`],
     color ? COLOR_CLASS_NAMES[color] : "",
     className || "",
   ];
