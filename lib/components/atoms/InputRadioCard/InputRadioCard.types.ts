@@ -1,6 +1,11 @@
 import { IconProps } from "../Icon";
 import { InputSizeMeasure } from "../../../types/input-size.types";
 
+export enum InputRadioCardDirection {
+  horizontal = "horizontal",
+  vertical = "vertical",
+}
+
 export interface InputRadioCardProps
   extends Omit<
     React.DetailedHTMLProps<
@@ -12,6 +17,6 @@ export interface InputRadioCardProps
   icon?: IconProps["name"];
   label?: string;
   isInvalid?: boolean;
-  direction?: "horizontal" | "vertical";
+  direction?: keyof typeof InputRadioCardDirection;
   size?: keyof typeof InputSizeMeasure;
 }
