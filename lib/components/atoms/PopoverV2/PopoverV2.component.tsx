@@ -66,17 +66,17 @@ export const Popover: React.FC<PopoverProps> = ({
 
     if (finalPosition === "bottom" || finalPosition === "top") {
       if (triggerRect.left + popoverRect.width > window.innerWidth) {
-        styles = { right: '0px', left: 'auto', transform: 'none' };
+        styles = { right: "0px", left: "auto", transform: "none" };
       } else if (triggerRect.right - popoverRect.width < 0) {
-        styles = { left: '0px', transform: 'none' };
+        styles = { left: "0px", transform: "none" };
       } else {
         styles = { left: "50%", transform: "translateX(-50%)" };
       }
     } else if (finalPosition === "left" || finalPosition === "right") {
       if (triggerRect.top + popoverRect.height > window.innerHeight) {
-        styles = { bottom: '0px', top: 'auto', transform: 'none' };
+        styles = { bottom: "0px", top: "auto", transform: "none" };
       } else if (triggerRect.bottom - popoverRect.height < 0) {
-        styles = { top: '0px', transform: 'none' };
+        styles = { top: "0px", transform: "none" };
       } else {
         styles = { top: "50%", transform: "translateY(-50%)" };
       }
@@ -105,15 +105,13 @@ export const Popover: React.FC<PopoverProps> = ({
         {trigger}
       </div>
 
-      {isOpen && (
-        <div
-          ref={popoverRef}
-          className={`popover-content popover-${popoverPosition}`}
-          style={popoverStyles}
-        >
-          {content}
-        </div>
-      )}
+      <div
+        ref={popoverRef}
+        className={`popover-content popover-${popoverPosition} popover-content--${isOpen ? "visible" : "hide"}`}
+        style={popoverStyles}
+      >
+        {content}
+      </div>
     </div>
   );
 };
