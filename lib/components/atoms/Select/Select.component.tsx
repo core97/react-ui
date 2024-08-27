@@ -94,7 +94,7 @@ export const Select = forwardRef<
     <Popover
       ref={selectRef}
       sizeAsTrigger
-      placement="bottom"
+      position="bottom"
       isOpen={isOpen}
       onClose={handleOnClose}
       onBlur={props.onBlur}

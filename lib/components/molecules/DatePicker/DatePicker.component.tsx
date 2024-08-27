@@ -95,7 +95,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
     return (
       <Popover
         ref={ref}
-        placement="bottom"
+        position="bottom"
         isOpen={isOpen}
         className={props.className}
         onBlur={props.onBlur}
