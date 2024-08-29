@@ -6,9 +6,7 @@ export interface PaginationProps {
   onChangePage: (page: number) => void;
   onNextPage?: () => void;
   onPreviousPage?: () => void;
-  options?: {
-    nextButtonLabel?: string;
-    previousButtonLabel?: string;
-  };
+  nextButtonLabel?: string;
+  previousButtonLabel?: string;
   size?: ButtonProps["size"];
 }

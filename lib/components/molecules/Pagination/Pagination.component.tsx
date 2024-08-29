@@ -13,7 +13,8 @@ export const Pagination = ({
   totalPages,
   onNextPage,
   onPreviousPage,
-  options,
+  nextButtonLabel,
+  previousButtonLabel,
   size = 's',
 }: PaginationProps) => {
   const pages = useMemo(() => {
@@ -49,7 +50,7 @@ export const Pagination = ({
           size={size}
           className={styles.previous_button}
         >
-          {options?.previousButtonLabel || "Anterior"}
+          {previousButtonLabel || "Anterior"}
         </Button>
       </li>
 
@@ -75,7 +76,7 @@ export const Pagination = ({
           className={styles.next_button}
 
         >
-          {options?.nextButtonLabel || "Siguiente"}
+          {nextButtonLabel || "Siguiente"}
         </Button>
       </li>
     </ul>
