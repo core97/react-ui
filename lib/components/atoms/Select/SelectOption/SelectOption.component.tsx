@@ -31,11 +31,9 @@ export const SelectOption = ({
       </div>
 
       <div className={styles.label_wrapper}>
-        {Boolean(icon) && (
-          <div
-            className={`${styles.label_icon_wrapper} ${styles[`label_icon_wrapper--size-${size}`]}`}
-          >
-            {icon}
+        {icon && (
+          <div className={styles.label_icon_wrapper}>
+            <Icon name={icon} size={ICON_SIZE[size]} />
           </div>
         )}
         <Text as="span" size={size}>

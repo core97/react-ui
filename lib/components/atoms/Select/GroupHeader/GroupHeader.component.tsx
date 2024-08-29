@@ -7,7 +7,7 @@ export const GroupHeader = ({ children, size }: GroupHeaderProps) => {
     <header
       className={`${styles.group_header} ${styles[`group_header--${size}`]}`}
     >
-      <Text weight="700w">{children}</Text>
+      <Text weight="300w" color="contrast-theme-200">{children}</Text>
     </header>
   );
 };

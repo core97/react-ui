@@ -48,28 +48,3 @@
   display: grid;
   place-content: center;
 }
-
-.label_icon_wrapper--size-xs {
-  height: var(--font-size-xs);
-  width: var(--font-size-xs);
-}
-
-.label_icon_wrapper--size-s {
-  height: var(--font-size-s);
-  width: var(--font-size-s);
-}
-
-.label_icon_wrapper--size-m {
-  height: var(--font-size-m);
-  width: var(--font-size-m);
-}
-
-.label_icon_wrapper--size-l {
-  height: var(--font-size-l);
-  width: var(--font-size-l);
-}
-
-.label_icon_wrapper--size-xl {
-  height: var(--font-size-xl);
-  width: var(--font-size-xl);
-}

@@ -1,9 +1,10 @@
 import { InputSizeMeasure } from "../../../types/input-size.types";
+import { ICON_BY_NAME } from "../Icon/Icon.contants";
 
 export type SelectOption = {
   label: string;
   value: string;
-  icon?: React.ReactNode;
+  icon?: keyof typeof ICON_BY_NAME;
 };
 
 export type Group = { group: string; options: SelectOption[] };
