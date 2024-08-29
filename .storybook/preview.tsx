@@ -5,7 +5,9 @@ import "../lib/styles/global.css";
 
 const withThemeProvider = (Story: React.FC) => (
   <ThemeContextProvider>
-    <Story />
+    <div style={{ height: "100dvh", display: "grid", placeContent: "center" }}>
+      <Story />
+    </div>
   </ThemeContextProvider>
 );
 
