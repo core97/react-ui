@@ -1,10 +1,11 @@
 .popover-container {
+  min-width: -webkit-fill-available;
   display: inline-block;
   position: relative;
-  width: fit-content;
 }
 
 .popover-trigger {
+  min-width: -webkit-fill-available;
   cursor: pointer;
   display: inline-block;
 }

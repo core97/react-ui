@@ -32,10 +32,10 @@ Default.args = {
   withContentStyles: true,
   content: (
     <div style={{ padding: "12px" }}>
-      <Button variant="ghost" iconLeft="checked" isFullWidth>
+      <Button variant="ghost" iconLeft="checked" isFullWidth alignment="start">
         Create
       </Button>
-      <Button variant="ghost" iconLeft="close" isFullWidth>
+      <Button variant="ghost" iconLeft="close" isFullWidth alignment="start">
         Edit
       </Button>
     </div>
