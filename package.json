@@ -32,6 +32,11 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.3.4",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1",
     "@storybook/addon-a11y": "^8.1.2",
     "@storybook/addon-designs": "^8.0.2",
     "@storybook/addon-essentials": "^8.1.2",
@@ -69,5 +74,23 @@
     "react-day-picker": "^9.0.4",
     "react-hook-form": "^7.51.5",
     "recharts": "^2.12.7"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "repositoryUrl": "https://github.com/crazy-grey/react-ui-kit.git",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
+    ]
   }
 }
