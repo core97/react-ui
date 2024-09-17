@@ -16,7 +16,13 @@ jobs:
         with:
           node-version: "lts/*"
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+      - name: Build package
+        run: npm run build
+      - name: Configure npm token to Github Registry
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.PACKAGE_REGISTRY_TOKEN }}" > ~/.npmrc
+          echo "@crazy-grey:registry=https://npm.pkg.github.com" >> ~/.npmrc
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
