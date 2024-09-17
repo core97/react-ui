@@ -32,10 +32,10 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
+    "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.3.4",
-    "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.1",
     "@storybook/addon-a11y": "^8.1.2",
     "@storybook/addon-designs": "^8.0.2",
@@ -83,10 +83,14 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
+      "@semantic-release/changelog",
       [
         "@semantic-release/git",
         {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
           "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
         }
       ],
