@@ -21,6 +21,9 @@ export const Table = <T extends RowContent>({
   const [isCheckedAllRows, setIsCheckedAllRows] = useState(false);
   const [sorting, setSorting] = useState<Sorting<T> | undefined>();
 
+  // TODO: remove 
+  console.log(rows);
+
   const handleOnSelectRow = (rowId: string) => () => {
     const isChecked = selectedRows?.some((el) => el === rowId);
     const rowsFiltered = selectedRows?.filter((el) => el !== rowId) || [];
