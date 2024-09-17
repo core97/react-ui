@@ -1,0 +1,15 @@
+.container {
+  padding-left: 0px;
+  display: grid;
+  grid-auto-flow: column;
+  list-style: none;
+  width: fit-content;
+}
+
+.previous_button {
+  margin-right: 6px;
+}
+
+.next_button {
+  margin-left: 6px;
+}

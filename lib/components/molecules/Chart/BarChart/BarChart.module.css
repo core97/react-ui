@@ -1,0 +1,11 @@
+.ccontainer {
+  overflow: visible;
+}
+
+.axis {
+  font-size:var(--font-size-xs);
+}
+
+.quantity_label {
+  fill: var(--contrast-theme-color-900);
+}

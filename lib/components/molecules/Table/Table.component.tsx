@@ -106,6 +106,7 @@ export const Table = <T extends RowContent>({
               {!!actions && (
                 <TableCell>
                   <Popover
+                    position="bottom"
                     content={
                       <ul className={styles.actions_list}>
                         {actions.map((action) => (

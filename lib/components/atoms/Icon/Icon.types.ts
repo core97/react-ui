@@ -8,5 +8,5 @@ export type IconSvgProps = {
 
 export interface IconProps extends IconSvgProps {
   name: keyof typeof ICON_BY_NAME;
-  color?: Color;
+  color?: keyof typeof Color;
 }

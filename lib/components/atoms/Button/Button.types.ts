@@ -9,11 +9,17 @@ export enum ButtonVariants {
   link = "link",
 }
 
+export enum ButtonAlingment {
+  center = 'center',
+  start = 'start'
+}
+
 export interface ButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
+  alignment?: keyof typeof ButtonAlingment;
   color?: keyof typeof ColorName;
   iconLeft?: keyof typeof ICON_BY_NAME;
   iconRight?: keyof typeof ICON_BY_NAME;

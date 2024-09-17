@@ -11,7 +11,7 @@ export const FormLabel = ({
   return (
     <Text
       as={as}
-      weight="600"
+      weight="600w"
       color="contrast-theme-700"
       size="s"
       {...restProps}
@@ -21,7 +21,7 @@ export const FormLabel = ({
         <Text
           as="span"
           color="error-800"
-          weight="700"
+          weight="700w"
           className={styles.required_icon}
         >
           *

@@ -17,20 +17,25 @@
 
 .input--size-xs {
   padding: var(--input-padding-y-xs) var(--input-padding-x-xs);
+  min-height: 16px;
 }
 
 .input--size-s {
   padding: var(--input-padding-y-s) var(--input-padding-x-s);
+  min-height: 18px;
 }
 
 .input--size-m {
   padding: var(--input-padding-y-m) var(--input-padding-x-m);
+  min-height: 20px;
 }
 
 .input--size-l {
   padding: var(--input-padding-y-l) var(--input-padding-x-l);
+  min-height: 22px;
 }
 
 .input--size-xl {
   padding: var(--input-padding-y-xl) var(--input-padding-x-xl);
+  min-height: 28px;
 }

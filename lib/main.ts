@@ -14,11 +14,17 @@ export * from "./components/atoms/Spinner";
 export * from "./components/atoms/Text";
 export * from "./components/atoms/Textarea";
 
+export * from "./components/molecules/Chart";
 export * from "./components/molecules/ColorSchemeToggle";
 export * from "./components/molecules/DatePicker";
 export * from "./components/molecules/Drawer";
+export * from "./components/molecules/Modal";
+export * from "./components/molecules/Pagination";
 export * from "./components/molecules/Sidebar";
 export * from "./components/molecules/Table";
 
 export * from "./hooks/useDisclosure";
+export * from "./hooks/usePagination";
 export * from "./hooks/useTheme";
+
+export * from "./types/pagination.types";

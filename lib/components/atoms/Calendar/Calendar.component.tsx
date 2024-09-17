@@ -6,9 +6,10 @@ import "./Calendar.css";
 export const Calendar = (props: CalendarProps) => {
   return (
     <DayPicker
+      mode="single"
       {...props}
       showOutsideDays
-      classNames={{ 
+      classNames={{
         root: "calendar_root",
         months: "calendar_months",
         month_grid: "calendar_month_grid",
@@ -19,7 +20,7 @@ export const Calendar = (props: CalendarProps) => {
         weekday: "calendar_weekday",
         weekdays: "calendar_weekdays_header",
         today: "calendar_day--today",
-        outside: 'calendar_day--outside',
+        outside: "calendar_day--outside",
         range_middle: "calendar_range_middle",
         range_start: "calendar_day--range_start",
         range_end: "calendar_day--range_end",

@@ -5,6 +5,7 @@
 
 .container--direction-row {
   flex-direction: row;
+  align-items: center;
 }
 
 .container--direction-column {

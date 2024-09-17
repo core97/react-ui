@@ -1,0 +1,17 @@
+.quantity_label {
+  fill: var(--contrast-theme-color-900);
+  font-size: var(--font-size-xs);
+}
+
+.donut_quantity_label {
+  fill: var(--contrast-theme-color-900);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+}
+
+.donut_description_label {
+  fill: var(--contrast-theme-color-300);
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+
+}

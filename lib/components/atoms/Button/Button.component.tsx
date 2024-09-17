@@ -12,6 +12,7 @@ import styles from "./Button.module.css";
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
+      alignment = 'center',
       className,
       color = "contrast-theme",
       children,
@@ -33,6 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const classNames = [
       styles.button,
       styles[`button--size-${size}`],
+      styles[`button--alingment-${alignment}`],
       isLoading ? styles[`button--loading`] : "",
       isFullWidth ? styles[`button--full-width`] : "",
       styles[`button--variant-${variant}`],

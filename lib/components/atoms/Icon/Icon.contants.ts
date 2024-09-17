@@ -10,7 +10,9 @@ import { ChevronRight } from "./library/chevron-right.icon";
 import { ChevronUp } from "./library/chevron-up.icon";
 import { Close } from "./library/close.icon";
 import { MenuDots } from "./library/menu-dots.icon";
+import { Moon } from "./library/moon.icon";
 import { Search } from "./library/search.icon";
+import { Sun } from "./library/sun.icon";
 
 export const ICON_BY_NAME = {
   arrow_down: ArrowDown,
@@ -25,5 +27,7 @@ export const ICON_BY_NAME = {
   chevron_up: ChevronUp,
   close: Close,
   menu_dots: MenuDots,
+  moon: Moon,
   search: Search,
+  sun: Sun,
 };

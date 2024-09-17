@@ -35,7 +35,7 @@ export const Select = forwardRef<
   const selectRef = useRef<HTMLDivElement>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
 
-  const { isOpen, onClose, onToggle } = useDisclosure();
+  const { isOpen, onClose, onOpen, onToggle } = useDisclosure();
 
   const size = props.size || "m";
 
@@ -94,8 +94,10 @@ export const Select = forwardRef<
     <Popover
       ref={selectRef}
       sizeAsTrigger
-      placement="bottom"
+      withContentStyles
+      position="bottom"
       isOpen={isOpen}
+      onOpen={onOpen}
       onClose={handleOnClose}
       onBlur={props.onBlur}
       trigger={

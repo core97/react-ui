@@ -1,14 +1,20 @@
-export type PopoverPositionY = "top" | "bottom";
-export type PopoverPositionX = "right" | "left";
+export enum PopoverPosition {
+  top = "top",
+  bottom = "bottom",
+  left = "left",
+  right = "right",
+}
 
 export interface PopoverProps {
-  content: React.ReactNode | React.ReactNode[];
   trigger: React.ReactNode;
+  content: React.ReactNode;
   className?: string;
+  contentClassName?: string;
   isOpen?: boolean;
-  onBlur?: React.FocusEventHandler<HTMLDivElement>;
   onClose?: () => void;
   onOpen?: () => void;
-  placement?: PopoverPositionY | PopoverPositionX;
+  position?: keyof typeof PopoverPosition;
+  onBlur?: React.FocusEventHandler<HTMLDivElement>;
   sizeAsTrigger?: boolean;
+  withContentStyles?: boolean;
 }
