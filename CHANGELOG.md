@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/crazy-grey/react-ui-kit/compare/v1.5.0...v1.6.0) (2024-09-18)
+
+
+### Features
+
+* modify workflows ([0e6a857](https://github.com/crazy-grey/react-ui-kit/commit/0e6a85701f765a66bfb03b1f915add78eace52f3))
+
 # [1.5.0](https://github.com/crazy-grey/react-ui-kit/compare/v1.4.0...v1.5.0) (2024-09-17)
 
 
