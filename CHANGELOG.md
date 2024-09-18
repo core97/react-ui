@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/crazy-grey/react-ui-kit/compare/v1.6.0...v1.7.0) (2024-09-18)
+
+
+### Features
+
+* add changes to publish package ([cc5eb36](https://github.com/crazy-grey/react-ui-kit/commit/cc5eb365e24eece2434f852b2efb6248d438b109))
+
 # [1.6.0](https://github.com/crazy-grey/react-ui-kit/compare/v1.5.0...v1.6.0) (2024-09-18)
 
 
