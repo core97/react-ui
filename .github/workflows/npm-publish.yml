@@ -4,34 +4,35 @@ on:
   release:
     types: [published]
 
-env:
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
 jobs:
   publish:
     runs-on: ubuntu-latest
-    # modifies the default permissions granted to the GITHUB_TOKEN
     permissions:
       contents: read
-      id-token: write
+      packages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: "20.x"
-          registry-url: https://npm.pkg.github.com/
+          # The setup-node action creates an .npmrc file on the runner
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@crazy-grey'
+
       - name: Install dependencies
         run: |
           npm ci
+
       - name: Build package
         run: |
           npm run build
-      - name: Configure npm token to Github Registry
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ env.NODE_AUTH_TOKEN }}" > ~/.npmrc
-          echo "@crazy-grey:registry=https://npm.pkg.github.com" >> ~/.npmrc
+
       - name: Publish package
         run: |
           npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+

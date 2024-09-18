@@ -1,5 +1,5 @@
 {
-  "name": "react-ui-kit",
+  "name": "@crazy-grey/react-ui-kit",
   "private": false,
   "version": "0.0.6",
   "type": "module",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",
