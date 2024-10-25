@@ -115,18 +115,24 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
 
       if (finalPosition === "bottom" || finalPosition === "top") {
         if (triggerRect.left + popoverRect.width > window.innerWidth) {
+          // Exceeds on the left
           styles = { right: "0px", left: "auto", transform: "none" };
         } else if (triggerRect.right - popoverRect.width < 0) {
+          // Exceeds on the right
           styles = { left: "0px", transform: "none" };
         } else {
+          // Centered
           styles = { left: "50%", transform: "translateX(-50%)" };
         }
       } else if (finalPosition === "left" || finalPosition === "right") {
         if (triggerRect.top + popoverRect.height > window.innerHeight) {
+          // Exceedsat at the top
           styles = { bottom: "0px", top: "auto", transform: "none" };
         } else if (triggerRect.bottom - popoverRect.height < 0) {
+          // Exceeds at the bottom
           styles = { top: "0px", transform: "none" };
         } else {
+          // Centered
           styles = { top: "50%", transform: "translateY(-50%)" };
         }
       }
