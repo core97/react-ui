@@ -1,11 +1,12 @@
 @import "./reset.css";
 @import "./font.css";
-@import "./colors.css";
+@import "./variables/colors.css";
+@import "./variables/font-size.css";
+@import "./variables/input-space.css";
 @import "./classes/backgound-color.css";
 @import "./classes/color.css";
 @import "./classes/font-size.css";
 @import "./classes/input-size.css";
-@import "./variables/table.css";
 
 [data-color-scheme="light"] {
   body {

@@ -18,11 +18,11 @@
   cursor: not-allowed;
 }
 
-.button-alingment--center {
+.button--alingment-center {
   justify-content: center;
 }
 
-.button-alingment--start {
+.button--alingment-start {
   justify-content: flex-start;
 }
 

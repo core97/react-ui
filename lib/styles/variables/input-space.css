@@ -1,0 +1,16 @@
+:root {
+  --input-padding-y-xs: 6px;
+  --input-padding-x-xs: 8px;
+
+  --input-padding-y-s: 8px;
+  --input-padding-x-s: 12px;
+
+  --input-padding-y-m: 10px;
+  --input-padding-x-m: 16px;
+
+  --input-padding-y-l: 12px;
+  --input-padding-x-l: 20px;
+
+  --input-padding-y-xl: 14px;
+  --input-padding-x-xl: 24px;
+}
