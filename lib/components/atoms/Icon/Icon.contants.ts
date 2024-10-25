@@ -1,3 +1,4 @@
+import { Add } from "./library/add.icon";
 import { ArrowDown } from "./library/arrow-down.icon";
 import { ArrowLeft } from "./library/arrow-left.icon";
 import { ArrowRight } from "./library/arrow-right.icon";
@@ -9,12 +10,15 @@ import { ChevronLeft } from "./library/chevron-left.icon";
 import { ChevronRight } from "./library/chevron-right.icon";
 import { ChevronUp } from "./library/chevron-up.icon";
 import { Close } from "./library/close.icon";
+import { Delete } from "./library/delete.icon";
+import { Edit } from "./library/edit.icon";
 import { MenuDots } from "./library/menu-dots.icon";
 import { Moon } from "./library/moon.icon";
 import { Search } from "./library/search.icon";
 import { Sun } from "./library/sun.icon";
 
 export const ICON_BY_NAME = {
+  add: Add,
   arrow_down: ArrowDown,
   arrow_left: ArrowLeft,
   arrow_right: ArrowRight,
@@ -26,6 +30,8 @@ export const ICON_BY_NAME = {
   chevron_right: ChevronRight,
   chevron_up: ChevronUp,
   close: Close,
+  delete: Delete,
+  edit: Edit,
   menu_dots: MenuDots,
   moon: Moon,
   search: Search,
