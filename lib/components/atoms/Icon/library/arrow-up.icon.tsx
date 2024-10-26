@@ -12,9 +12,9 @@ export function ArrowUp({ className, size }: IconSvgProps) {
       <path
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
         d="M12 20V4m0 0l6 6m-6-6l-6 6"
       />
     </svg>

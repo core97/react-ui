@@ -1,0 +1,62 @@
+.header {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--theme-color-500);
+  overflow: auto;
+}
+
+.header--alignment-start {
+  justify-content: flex-start;
+}
+
+.header--alignment-space-around {
+  justify-content: space-around;
+}
+
+.tab_button {
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+    backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.tab_button:hover {
+  cursor: pointer;
+}
+
+.tab_button:hover .tab_button-label {
+  color: var(--theme-color-100);
+}
+
+[data-color-scheme="dark"] .tab_button:hover .tab_button-label {
+  color: var(--contrast-theme-color-400);
+}
+
+.tab_button--active .tab_button-label,
+.tab_button--active:hover .tab_button-label,
+[data-color-scheme="dark"] .tab_button--active:hover .tab_button-label {
+  color: var(--contrast-theme-color-900);
+}
+
+.tab_button-pill {
+  position: absolute;
+  background-color: var(--primary-color-500);
+  inset: 0px;
+  border-radius: 8px;
+}
+
+.tab_button-label {
+  position: relative;
+  z-index: 1;
+}
+
+.tab_content {
+  margin: 24px 0px;
+  overflow: auto;
+}

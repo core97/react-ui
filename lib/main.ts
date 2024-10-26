@@ -11,6 +11,7 @@ export * from "./components/atoms/InputText";
 export * from "./components/atoms/Popover";
 export * from "./components/atoms/Select";
 export * from "./components/atoms/Spinner";
+export * from "./components/molecules/Tabs";
 export * from "./components/atoms/Text";
 export * from "./components/atoms/Textarea";
 

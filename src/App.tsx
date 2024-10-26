@@ -7,6 +7,8 @@ import {
   Drawer,
   useDisclosure,
   Text,
+  Tabs,
+  TabPanel,
 } from "../lib/main";
 
 const rows = [
@@ -27,13 +29,13 @@ function App() {
       <main
         style={{
           marginTop: "200px",
-          border: "1px solid red",
+          // border: "1px solid red",
           display: "grid",
           placeContent: "center",
-          gap: "24px",
+          gap: "42px",
         }}
       >
-        <Drawer isOpen={isOpen} onClose={onClose} placement="left">
+        <Drawer isOpen={isOpen} onClose={onClose} placement="right">
           <Text size="5xl">d</Text>
           <Text size="5xl">Hola</Text>
           <Text size="5xl">Hola</Text>
@@ -56,7 +58,18 @@ function App() {
           <DatePicker mode="single" />
         </Drawer>
 
-        <button onClick={onOpen}>Abrir drawer</button>
+        {/* <button onClick={onOpen}>Abrir drawer</button> */}
+
+        <div>
+          <Tabs alignment="space-around">
+            <TabPanel title="Perros">
+              <h1>Grey es la mejor</h1>
+            </TabPanel>
+            <TabPanel title="Gatos">
+              <h1>El michi</h1>
+            </TabPanel>
+          </Tabs>
+        </div>
 
         <Table
           rows={rows.map((el) => ({

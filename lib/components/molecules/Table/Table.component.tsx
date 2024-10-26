@@ -111,7 +111,7 @@ export const Table = <T extends RowContent>({
                     content={
                       <ul className={styles.actions_list}>
                         {actions.map((action) => (
-                          <li>
+                          <li key={`${row.id}-${action.label}`}>
                             <Button
                               onClick={() => action.onClick(row)}
                               size="s"
