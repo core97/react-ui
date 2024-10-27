@@ -57,6 +57,7 @@
 }
 
 .tab_content {
+  display: grid;
   margin: 24px 0px;
-  overflow: auto;
+  /* overflow: auto; */
 }

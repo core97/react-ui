@@ -25,7 +25,9 @@ export const InfoModal = ({
             </Button>
           )}
           {primaryButton && (
-            <Button {...primaryButton}>{primaryButton.label}</Button>
+            <Button {...primaryButton} variant="filled">
+              {primaryButton.label}
+            </Button>
           )}
         </footer>
       )}

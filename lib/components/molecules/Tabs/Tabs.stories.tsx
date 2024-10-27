@@ -1,6 +1,9 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { InputSizeMeasure } from "../../../types/input-size.types";
+import { InputText } from "../../atoms/InputText";
+import { FormField } from "../../atoms/FormField";
+import { FormLabel } from "../../atoms/FormLabel";
 import { Tabs } from "./Tabs.component";
 import { TabPanel } from "./TabPanel/TabPanel.component";
 import { TabsProps, TabAlignment } from "./Tabs.types";
@@ -23,35 +26,23 @@ export default {
 const Template: StoryFn<TabsProps> = (args) => (
   <div style={{ width: "500px" }}>
     <Tabs {...args}>
-      <TabPanel title="Perros">
-        <div
-          style={{
-            width: "50px",
-            height: "50px",
-            borderRadius: "999px",
-            backgroundColor: "lime",
-          }}
-        />
+      <TabPanel title="Dogs">
+        <FormField>
+          <FormLabel>Dog name</FormLabel>
+          <InputText />
+        </FormField>
       </TabPanel>
-      <TabPanel title="Gatos">
-        <div
-          style={{
-            width: "50px",
-            height: "50px",
-            borderRadius: "999px",
-            backgroundColor: "coral",
-          }}
-        />
+      <TabPanel title="Cats">
+        <FormField>
+          <FormLabel>Cat name</FormLabel>
+          <InputText />
+        </FormField>
       </TabPanel>
-      <TabPanel title="Peces">
-        <div
-          style={{
-            width: "50px",
-            height: "50px",
-            borderRadius: "999px",
-            backgroundColor: "blue",
-          }}
-        />
+      <TabPanel title="Fishes">
+        <FormField>
+          <FormLabel>Fish name</FormLabel>
+          <InputText />
+        </FormField>
       </TabPanel>
     </Tabs>
   </div>
