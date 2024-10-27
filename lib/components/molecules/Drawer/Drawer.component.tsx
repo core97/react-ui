@@ -42,6 +42,7 @@ export const Drawer = ({
             size="xs"
             onClick={onClose}
             className={styles["drawer__close-btn"]}
+            aria-label="close"
           >
             <Icon name="close" size={20} />
           </Button>
