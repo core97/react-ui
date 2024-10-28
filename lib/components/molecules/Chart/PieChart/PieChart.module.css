@@ -1,3 +1,7 @@
+.wrapper--show-overflow-labels svg {
+  overflow: inherit !important;
+}
+
 .quantity_label {
   fill: var(--contrast-theme-color-900);
   font-size: var(--font-size-xs);
@@ -13,5 +17,4 @@
   fill: var(--contrast-theme-color-300);
   font-size: var(--font-size-xs);
   font-weight: 300;
-
 }

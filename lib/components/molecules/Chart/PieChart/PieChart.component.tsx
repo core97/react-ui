@@ -15,10 +15,6 @@ import { calcFontSizeLabel } from "./PieChart.helper";
 import { PieChartProps } from "./PieChart.types";
 import styles from "./PieChart.module.css";
 
-/**
- * TODO: hacer lo del donut
- */
-
 export const PieChart = ({
   data,
   type = "pie",
@@ -61,6 +57,7 @@ export const PieChart = ({
       width="100%"
       height="100%"
       ref={chartRef}
+      className={labelIsVisible ? styles["wrapper--show-overflow-labels"] : ""}
     >
       <Chart data={dataWithColors}>
         <Pie

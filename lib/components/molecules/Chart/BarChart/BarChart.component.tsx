@@ -26,6 +26,15 @@ export const BarChart = ({
 
   const colors = Object.values(COLORS);
 
+  const largestName = data.reduce(
+    (previous, current) =>
+      current.name.length > previous.length ? current.name : previous,
+    data[0]?.name || ""
+  );
+
+  console.log('*** LARGEST NAME ***');
+  console.log(largestName);
+
   return (
     <ResponsiveContainer
       minHeight={100}
@@ -57,6 +66,7 @@ export const BarChart = ({
               axisLine={false}
               tickMargin={8}
               className={styles.axis}
+              width={largestName.length * 10}
             />
             <XAxis type="number" hide />
           </>
@@ -86,7 +96,12 @@ export const BarChart = ({
         {Object.keys(data[0])
           .filter((key) => key !== "name")
           .map((key, index) => (
-            <Bar dataKey={key} fill={colors[index]} radius={[4, 4, 4, 4]}>
+            <Bar
+              key={key}
+              dataKey={key}
+              fill={colors[index]}
+              radius={[4, 4, 4, 4]}
+            >
               {quantityLabelIsVisible && (
                 <LabelList
                   position={layout === "horizontal" ? "top" : "right"}
