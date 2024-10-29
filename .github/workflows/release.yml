@@ -22,5 +22,5 @@ jobs:
       - name: Release
         env:
           # Reason why not to use GITHUB_TOKEN: https://stackoverflow.com/questions/69063452/github-actions-on-release-created-workflow-trigger-not-working
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
