@@ -82,7 +82,7 @@
     "branches": [
       "main"
     ],
-    "repositoryUrl": "https://github.com/crazy-grey/react-ui-kit.git",
+    "repositoryUrl": "https://github.com/jucodev/react-ui.git",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
