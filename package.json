@@ -1,7 +1,7 @@
 {
   "name": "@crazy-grey/react-ui-kit",
   "private": false,
-  "version": "1.3.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
