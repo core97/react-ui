@@ -9,6 +9,7 @@ import {
   Text,
   Tabs,
   TabPanel,
+  Chart,
 } from "../lib/main";
 
 const rows = [
@@ -59,6 +60,17 @@ function App() {
         </Drawer>
 
         {/* <button onClick={onOpen}>Abrir drawer</button> */}
+
+        <Chart
+          variant="bar"
+          legendIsVisible
+          layout="vertical"
+          data={[
+            { name: "Argentina", dogs: 12, cats: 28 },
+            { name: "Spainewde", dogs: 67, cats: 34 },
+            { name: "Colombia", dogs: 23, cats: 63 },
+          ]}
+        />
 
         <div>
           <Tabs alignment="space-around">

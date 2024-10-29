@@ -13,6 +13,7 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
     "@storybook/addon-storysource",
     "storybook-addon-render-modes",
+    "storybook-addon-root-attributes",
   ],
   framework: {
     name: "@storybook/react-vite",

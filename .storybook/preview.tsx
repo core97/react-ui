@@ -1,5 +1,6 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
+import { type RootAttribute } from "storybook-addon-root-attributes";
 import { ThemeContextProvider } from "../lib/hooks/useTheme";
 import "../lib/styles/global.css";
 
@@ -21,6 +22,21 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    rootAttributes: [
+      {
+        attribute: "data-color-scheme",
+        defaultState: {
+          name: "Dark",
+          value: "dark",
+        },
+        states: [
+          {
+            name: "Light",
+            value: "light",
+          },
+        ],
+      },
+    ] as RootAttribute[],
   },
 };
 
