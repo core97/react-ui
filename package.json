@@ -72,6 +72,9 @@
     "vite-plugin-lib-inject-css": "^2.1.1",
     "vite-tsconfig-paths": "^5.0.1"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.24.3"
+  },
   "dependencies": {
     "date-fns": "^3.6.0",
     "framer-motion": "^11.11.10",
