@@ -1,8 +1,8 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
 import { type RootAttribute } from "storybook-addon-root-attributes";
-import { ThemeContextProvider } from "../lib/hooks/useTheme";
-import "../lib/styles/global.css";
+import { ThemeContextProvider } from "../src/hooks/useTheme";
+import "../src/styles/global.css";
 
 const withThemeProvider = (Story: React.FC) => (
   <ThemeContextProvider>
