@@ -69,8 +69,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       }
     }, [color, colorScheme, variant]);
 
-    console.log('Hello word');
-
     return (
       <button
         ref={ref}
