@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Mode } from "react-day-picker";
 import { Calendar } from "./Calendar.component";

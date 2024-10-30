@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Table } from "./Table.component";
 import { TableProps } from "./Table.types";

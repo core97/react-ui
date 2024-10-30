@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { TextTagAs, TextWeight } from "../Text/Text.types";
 import { InputSizeMeasure } from "../../../types/input-size.types";

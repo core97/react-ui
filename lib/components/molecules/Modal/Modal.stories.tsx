@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { Modal } from "./Modal.component";
 import { ModalProps, ModalVariant } from "./Modal.types";

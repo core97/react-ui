@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { ColorSchemeToggle } from "./ColorSchemeToggle.component";
 import { ColorSchemeToggleProps } from "./ColorSchemeToggle.types";

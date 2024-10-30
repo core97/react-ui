@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { ColorName } from "../../../types/colors.types";
 import { Spinner } from "./Spinner.component";

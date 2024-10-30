@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { BarChart } from "./BarChart.component";
 import { BarChartProps, BarChartDataItem } from "./BarChart.types";

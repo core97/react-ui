@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { InputSizeMeasure } from "../../../types/input-size.types";
 import { Checkbox } from "./Checkbox.component";
@@ -26,12 +25,12 @@ const Template: StoryFn<CheckboxProps> = (args) => <Checkbox {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  size: "medium",
+  size: "m",
   isInvalid: false,
 };
 
 export const Invalid = Template.bind({});
 Invalid.args = {
-  size: "medium",
+  size: "m",
   isInvalid: true,
 };

@@ -1,3 +1,4 @@
+import { Locale } from "date-fns";
 import { CalendarProps } from "../../../atoms/Calendar";
 import { DatePickerProps } from "../DatePicker.types";
 import { NonNullable } from "../../../../types/utils.types";
@@ -11,6 +12,6 @@ export interface DatePickerTriggerProps {
   selected?: string[];
   disabled?: boolean;
   isInvalid?: boolean;
-  locale?: CalendarProps['locale'];
+  locale?: Pick<Locale, "options" | "localize" | "formatLong">;
   placeholder?: string;
 }

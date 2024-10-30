@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { InputSizeMeasure } from "../../../types/input-size.types";
 import { Color } from "../../../types/colors.types";

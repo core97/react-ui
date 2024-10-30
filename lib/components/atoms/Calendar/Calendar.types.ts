@@ -1,3 +1,5 @@
-import { type DayPickerProps } from "react-day-picker";
+import { Locale, type DayPickerProps } from "react-day-picker";
 
-export type CalendarProps = DayPickerProps;
+export type CalendarProps = DayPickerProps & {
+  locale?: Pick<Locale, "options" | "localize" | "formatLong">;
+};

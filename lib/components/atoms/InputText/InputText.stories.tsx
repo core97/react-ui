@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { InputText } from "./InputText.component";
 import { InputTextProps, InputTextTypes } from "./InputText.types";
@@ -39,8 +38,8 @@ const Template: StoryFn<InputTextProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  icon: "calendar",
-  label: "Lorem ipsum",
+  iconLeft: "calendar",
+  placeholder: "Lorem ipsum",
 };
 
 export const WithLeftIcon = Template.bind({});

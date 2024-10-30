@@ -1,4 +1,3 @@
-import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import { FormHelper } from "./FormHelper.component";
 import { FormHelperProps, FormHelperVariant } from "./FormHelper.types";
