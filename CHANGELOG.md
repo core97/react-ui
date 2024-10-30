@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/core97/react-ui/compare/v1.0.0...v1.1.0) (2024-10-30)
+
+
+### Features
+
+* add console.log ([e03bd75](https://github.com/core97/react-ui/commit/e03bd75f42826476922acb1ebca9535d6932bcc5))
+
 # 1.0.0 (2024-10-30)
 
 
